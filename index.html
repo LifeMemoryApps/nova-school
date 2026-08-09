@@ -288,6 +288,64 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
 @media(pointer:coarse){.editor-toolbar button,.mode-btn,.tool-btn,.shape-btn{min-width:46px;min-height:46px}.object-drag-handle{height:36px}.image-body,.textbox-body,.postit-body{height:calc(100% - 36px)}.page-object.selected .resize-handle{width:28px;height:28px}.note-editor{font-size:20px!important}}
 @media(max-width:900px){.note-editor{padding:52px 48px!important}.notebook-heading .heading-actions{gap:6px}.heading-actions #schoolYearSelect{display:none}}
 
+
+/* ==================== NOVA V10 — focus Word + pagination intuitive ==================== */
+:root{--nova-page-w:900px;--nova-page-h:1273px}
+.note-editor{font-size:20px!important;line-height:1.8!important}
+.note-editor:empty:before{content:"Clique ici pour commencer";color:#aaa4b8;pointer-events:none;font-style:italic}
+.object-text .textbox-body:empty:before{content:"Écris ici";color:#8d879d;opacity:.65;pointer-events:none}
+
+/* Bibliothèque matières : ajout toujours évident */
+.notebook-add-card{border:2px dashed #b8a9f7!important;background:linear-gradient(135deg,#fbf9ff,#f1edff)!important;color:#654bd6!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:90px!important;font-weight:800!important}
+.notebook-add-card b{font-size:22px}.notebook-add-card span{font-size:13px}
+
+/* Une matière ouverte = aucun autre cahier visible */
+.subject-open #notebooksGrid{display:none!important}
+.subject-open .notebook-heading{margin-bottom:10px}
+.subject-open .editor-layout{margin-top:0}
+.subject-open #addSubjectNotebookBtn{display:none!important}
+
+/* Focus doit ressembler à Word : toolbar + feuille, rien d'autre */
+body.nova-focus-mode{background:#dfe1e8!important;overflow:hidden!important}
+.nova-focus-mode .sidebar,.nova-focus-mode .topbar,.nova-focus-mode #notebooks>.notebook-heading,.nova-focus-mode #notebooks>.notebook-strip,.nova-focus-mode .pages-panel,.nova-focus-mode .note-meta,.nova-focus-mode .focus-support-bar,.nova-focus-mode .mode-toggle,.nova-focus-mode .editor-footer,.nova-focus-mode .audio-tracks{display:none!important}
+.nova-focus-mode .main{padding:0!important;height:100vh!important;overflow:hidden!important;background:#dfe1e8!important}
+.nova-focus-mode #notebooks{height:100vh!important}
+.nova-focus-mode .editor-layout{display:block!important;height:100vh!important}
+.nova-focus-mode .editor-card{height:100vh!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#e3e4ea!important;display:flex!important;flex-direction:column!important}
+.nova-focus-mode .editor-topline{height:auto!important;min-height:58px!important;position:sticky!important;top:0!important;z-index:100!important;border-bottom:1px solid #d8d7e2!important;box-shadow:0 2px 12px rgba(30,25,60,.08)!important;background:rgba(255,255,255,.98)!important;padding-left:max(8px,env(safe-area-inset-left))!important;padding-right:max(8px,env(safe-area-inset-right))!important}
+.nova-focus-mode .editor-toolbar{padding:7px 10px!important;max-height:58px!important;overflow-x:auto!important;scrollbar-width:none!important}
+.nova-focus-mode .editor-toolbar::-webkit-scrollbar{display:none}
+.nova-focus-mode .editor-toolbar button,.nova-focus-mode .toolbar-select{min-height:40px!important}
+.nova-focus-mode .editor-actions{padding:7px 10px 7px 2px!important}
+.nova-focus-mode #editorFocusBtn{background:#7657f7!important;color:#fff!important;border-color:#7657f7!important}
+.nova-focus-mode #objectContextBar,.nova-focus-mode #tableContextBar,.nova-focus-mode #drawToolbar{flex:0 0 auto!important;position:relative!important;top:auto!important;z-index:90!important}
+.nova-focus-mode .editor-viewport{flex:1!important;min-height:0!important;overflow:auto!important;padding:26px 40px 70px!important;background:#dfe1e8!important;scroll-padding-top:20px!important}
+.nova-focus-mode .page-surface{box-shadow:0 6px 24px rgba(35,32,52,.18)!important;border-radius:2px!important}
+.nova-focus-mode .page-stage{margin:0 auto!important}
+
+/* Barre d'outils plus compacte en focus : secondaires cachés tant que Plus n'est pas ouvert */
+.nova-focus-mode .editor-card:not(.toolbar-expanded) .tool-secondary{display:none!important}
+.nova-focus-mode .toolbar-more-toggle{position:sticky;right:0;background:#fff!important}
+
+/* Images / documents : manipulation évidente */
+.object-image.selected{outline:3px solid #7657f7;outline-offset:2px}
+.object-image.selected .image-body{cursor:move}
+.object-image .object-drag-handle{opacity:.25;transition:.15s}.object-image.selected .object-drag-handle{opacity:1}
+.page-object.selected .resize-handle{width:30px!important;height:30px!important;border-width:5px!important;box-shadow:0 3px 10px rgba(44,31,97,.25)!important}
+.grip-se{right:-15px!important;bottom:-15px!important}.grip-sw{left:-15px!important;bottom:-15px!important}.grip-ne{right:-15px!important;top:-15px!important}.grip-nw{left:-15px!important;top:-15px!important}
+#objectContextBar .image-size-controls{display:inline-flex;gap:5px}
+#objectContextBar .image-size-controls button{min-width:40px}
+
+/* Tableau scolaire personnalisable */
+.table-builder{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.table-builder label{display:grid;gap:5px;font-weight:750;color:#4d475d}.table-builder input[type=number]{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:16px}.table-style-options{display:grid;gap:10px;padding:12px;background:#faf9ff;border:1px solid var(--line);border-radius:14px}.table-style-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.table-style-row input[type=color]{width:46px;height:36px;border:0;background:transparent}.table-presets{display:flex;gap:7px;flex-wrap:wrap}.table-preset{width:38px;height:38px;border-radius:10px;border:2px solid #fff;box-shadow:0 0 0 1px #d8d4e6}.nova-table{border-collapse:collapse!important}.nova-table td,.nova-table th{border:1px solid var(--table-border,#bfc7da)!important}.nova-table th{font-weight:800}.table-context-extra{display:inline-flex;align-items:center;gap:6px}.table-context-extra label{display:inline-flex;align-items:center;gap:4px;border:1px solid #dcd6f0;background:#fff;border-radius:9px;padding:5px 7px}.table-context-extra input[type=color]{width:28px;height:26px;border:0;padding:0;background:transparent}
+
+/* Auto-pagination / repère */
+.page-auto-badge{position:fixed;right:24px;bottom:22px;z-index:120;background:#27233a;color:#fff;padding:9px 13px;border-radius:999px;font-size:12px;font-weight:750;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.page-auto-badge.show{opacity:1;transform:none}
+
+/* Mobile / iPad */
+@media(max-width:1100px){.nova-focus-mode .editor-viewport{padding:18px 18px 55px!important}.nova-focus-mode .editor-toolbar{padding-left:6px!important}.nova-focus-mode .page-surface{border-radius:0!important}}
+@media(pointer:coarse){.object-image.selected .image-body{touch-action:none}.page-object.selected .resize-handle{width:34px!important;height:34px!important}}
+
 </style>
 </head>
 <body>
@@ -534,7 +592,7 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
             <div class="note-meta">
               <select id="noteSubject"></select>
               <select id="noteChapter"><option value="">Sans chapitre</option></select>
-              <input id="noteTitle" placeholder="Titre du cours" />
+              <input id="noteTitle" placeholder="Titre du cours (facultatif)" />
               <select id="pageStyle">
                 <option value="lined">Lignes</option>
                 <option value="seyes">Seyès</option>
@@ -1074,10 +1132,10 @@ async function archiveSubject(id, archived = true) {
 async function addNote(subjectId) {
   const note = {
     id: uid("n"), subject: subjectId || state.subjects[0]?.id || "",
-    title: "Nouveau cours", style: "lined", mode: "texte", strokes: [],
+    title: "", style: "lined", mode: "texte", strokes: [],
     yearId: state.subjects.find(s=>s.id===(subjectId || state.subjects[0]?.id))?.yearId || state.schoolYears[0]?.id || "",
     chapterId: null, pageObjects: [], shapes: [], audioTracks: [], backgroundDocument: null,
-    html: "<h2>Nouveau cours</h2><p>Commence à écrire ici…</p>",
+    html: "",
     createdAt: Date.now(), updatedAt: Date.now(),
   };
   await StorageService.put("notes", note);
@@ -2039,7 +2097,7 @@ function renderObjects() {
       el.innerHTML = `<div class="object-drag-handle"></div>${shapeSvg(obj)}<div class="object-controls"><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else {
       const cls = obj.type === "postit" ? "postit-body" : "textbox-body";
-      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div>${obj.audioTimestampMs!=null?'<button data-act="listen" title="Écouter au repère">🎧</button>':''}<button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="${cls}" contenteditable="true">${obj.html || (obj.type === "postit" ? "À retenir…" : "Écris ici…")}</div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
+      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div>${obj.audioTimestampMs!=null?'<button data-act="listen" title="Écouter au repère">🎧</button>':''}<button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="${cls}" contenteditable="true">${obj.html || (obj.type === "postit" ? "À retenir…" : "")}</div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
       const body = el.querySelector("[contenteditable]");
       body.addEventListener("input", () => { obj.html = body.innerHTML; persistObjects(); });
     }
@@ -2048,7 +2106,7 @@ function renderObjects() {
     initObjectResize(el, obj);
     el.querySelector('[data-act="delete"]').onclick = (e) => { e.stopPropagation(); n.pageObjects = n.pageObjects.filter(x=>x.id!==obj.id); selectedObjectId=null; persistObjects(); renderObjects(); };
     const cropBtn=el.querySelector('[data-act="crop"]');if(cropBtn)cropBtn.onclick=async(e)=>{e.stopPropagation();const out=await scanImageInteractive(obj.src,{title:"Recadrer l'image"});if(out){obj.src=out;persistObjects();renderObjects();showToast("Image mise à jour")}};
-    const writeBtn=el.querySelector('[data-act="write"]');if(writeBtn)writeBtn.onclick=(e)=>{e.stopPropagation();addPageObject({type:"text",html:"Écris ici…",background:"transparent",x:obj.x+Math.min(40,obj.width*.1),y:obj.y+Math.min(70,obj.height*.2),width:Math.max(180,Math.min(340,obj.width*.55)),height:95,zIndex:(obj.zIndex||Date.now())+10});showToast("Zone de texte transparente ajoutée sur l'image")};
+    const writeBtn=el.querySelector('[data-act="write"]');if(writeBtn)writeBtn.onclick=(e)=>{e.stopPropagation();addPageObject({type:"text",html:"",background:"transparent",x:obj.x+Math.min(40,obj.width*.1),y:obj.y+Math.min(70,obj.height*.2),width:Math.max(180,Math.min(340,obj.width*.55)),height:95,zIndex:(obj.zIndex||Date.now())+10});showToast("Zone de texte transparente ajoutée sur l'image")};
     const rotateBtn=el.querySelector('[data-act="rotate"]'); if(rotateBtn)rotateBtn.onclick=(e)=>{e.stopPropagation();obj.rotation=((obj.rotation||0)+15)%360;el.style.transform=`rotate(${obj.rotation}deg)`;persistObjects()};
     el.querySelector('[data-act="duplicate"]').onclick = (e) => { e.stopPropagation(); const { id, ...copy } = obj; addPageObject({ ...copy, x:obj.x+24, y:obj.y+24, zIndex:Date.now() }); };
     const listen=el.querySelector('[data-act="listen"]'); if(listen)listen.onclick=(e)=>{e.stopPropagation();const audio=$(`audioTrack_${n.audioTracks?.[0]?.id}`)||$("audioTracksList")?.querySelector("audio");if(audio){audio.currentTime=Math.max(0,(obj.audioTimestampMs||0)/1000-3);audio.play();showToast("Lecture depuis le repère audio","info")}else showToast("Aucun audio disponible","info")};
@@ -2204,7 +2262,7 @@ function initEditor() {
     addPageObject({type:"image",src:dataUrl,width:380,height:250,x:180,y:220});
     showToast("Image déposée dans le cours");
   });
-  $("freeTextBtn").onclick=()=>addPageObject({type:"text",html:"Écris ici…",width:300,height:120,x:160,y:180});
+  $("freeTextBtn").onclick=()=>addPageObject({type:"text",html:"",background:"transparent",width:300,height:120,x:160,y:180});
   $("postItBtn").onclick=()=>addPageObject({type:"postit",html:"À retenir…",width:250,height:190,x:560,y:180});
   $("stickerBtn")?.addEventListener("click",openStickers);
   $("geometryBtn")?.addEventListener("click",openGeometry);
@@ -2778,9 +2836,160 @@ function renderHomeworkV9(){const list=$('homeworkList'),preview=$('homeworkPrev
 hw.renderHomework=renderHomeworkV9;hw.initHomeworkForm=function(){$('addHomeworkBtn').onclick=()=>editHomeworkV9()};
 
 function installTableContext(){document.addEventListener('selectionchange',()=>{const sel=window.getSelection();const node=sel?.anchorNode;const el=node?.nodeType===1?node:node?.parentElement;activeTableCell=el?.closest?.('#noteEditor td,#noteEditor th')||null;$('tableContextBar')?.classList.toggle('show',!!activeTableCell)});qsa('[data-table-act]').forEach(b=>b.onclick=()=>{if(!activeTableCell)return;const tr=activeTableCell.parentElement,table=activeTableCell.closest('table'),ri=[...table.rows].indexOf(tr),ci=[...tr.cells].indexOf(activeTableCell),act=b.dataset.tableAct;if(act==='row-above'||act==='row-below'){const idx=act==='row-above'?ri:ri+1,row=table.insertRow(idx);for(let i=0;i<tr.cells.length;i++)row.insertCell().innerHTML='<br>'}else if(act==='col-left'||act==='col-right'){const idx=act==='col-left'?ci:ci+1;[...table.rows].forEach(r=>r.insertCell(Math.min(idx,r.cells.length)).innerHTML='<br>')}else if(act==='del-row'&&table.rows.length>1)table.deleteRow(ri);else if(act==='del-col'&&tr.cells.length>1)[...table.rows].forEach(r=>r.deleteCell(Math.min(ci,r.cells.length-1)));$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}))})}
-function objectContext(){const layer=$('objectLayer');if(!layer)return;const sync=()=>{const sel=layer.querySelector('.page-object.selected'),bar=$('objectContextBar');if(!sel){bar?.classList.remove('show');return}bar.classList.add('show');const id=sel.dataset.objectId,n=state.notes.find(x=>x.id===state.activeNote),o=n?.pageObjects?.find(x=>x.id===id);if(!o)return;$('contextTitle').textContent=o.type==='image'?'Image':o.type==='text'?'Zone de texte':'Objet';$('contextWriteImage').style.display=o.type==='image'?'inline-flex':'none';$('contextTransparent').style.display=o.type==='text'?'inline-flex':'none';$('contextBgColor').parentElement.style.display=o.type==='text'?'inline-flex':'none';$('contextTransparent').onclick=async()=>{o.background='transparent';sel.style.background='transparent';await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.add('active')};$('contextBgColor').oninput=async e=>{o.background=e.target.value;sel.style.background=o.background;await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.remove('active')};$('contextWriteImage').onclick=async()=>{if(o.type!=='image')return;n.pageObjects.push({id:'obj_'+Date.now(),type:'text',html:'Écris ici…',background:'transparent',x:o.x+30,y:o.y+55,width:Math.max(180,Math.min(360,o.width*.6)),height:90,rotation:0,zIndex:Date.now()});await saveNote(n.id,{pageObjects:n.pageObjects});await ed.openNote(n.id);showToast("Écris directement sur l'image")}};layer.addEventListener('pointerup',()=>setTimeout(sync,0));new MutationObserver(()=>setTimeout(sync,0)).observe(layer,{childList:true,subtree:true})}
+function objectContext(){const layer=$('objectLayer');if(!layer)return;const sync=()=>{const sel=layer.querySelector('.page-object.selected'),bar=$('objectContextBar');if(!sel){bar?.classList.remove('show');return}bar.classList.add('show');const id=sel.dataset.objectId,n=state.notes.find(x=>x.id===state.activeNote),o=n?.pageObjects?.find(x=>x.id===id);if(!o)return;$('contextTitle').textContent=o.type==='image'?'Image':o.type==='text'?'Zone de texte':'Objet';$('contextWriteImage').style.display=o.type==='image'?'inline-flex':'none';$('contextTransparent').style.display=o.type==='text'?'inline-flex':'none';$('contextBgColor').parentElement.style.display=o.type==='text'?'inline-flex':'none';$('contextTransparent').onclick=async()=>{o.background='transparent';sel.style.background='transparent';await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.add('active')};$('contextBgColor').oninput=async e=>{o.background=e.target.value;sel.style.background=o.background;await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.remove('active')};$('contextWriteImage').onclick=async()=>{if(o.type!=='image')return;n.pageObjects.push({id:'obj_'+Date.now(),type:'text',html:'',background:'transparent',x:o.x+30,y:o.y+55,width:Math.max(180,Math.min(360,o.width*.6)),height:90,rotation:0,zIndex:Date.now()});await saveNote(n.id,{pageObjects:n.pageObjects});await ed.openNote(n.id);showToast("Écris directement sur l'image")}};layer.addEventListener('pointerup',()=>setTimeout(sync,0));new MutationObserver(()=>setTimeout(sync,0)).observe(layer,{childList:true,subtree:true})}
 const oldInit=ed.initEditor;ed.initEditor=function(){oldInit();const card=document.querySelector('.editor-card'),more=$('toolMoreBtn');const secondary=['#checkListBtn','#linkBtn','#postItBtn','#stickerBtn','#geometryBtn','#ocrCourseBtn','#pdfInCourseBtn','#removeDocBgBtn','#exportPdfBtn','#shareCourseBtn','#recordAudioBtn','#audioMarkerBtn','#readAloudBtn','#missingMarkerBtn','#mathToolsBtn','#historyBtn','#cleanNoteBtn','#deleteNoteBtn','[data-cmd="justifyLeft"]','[data-cmd="justifyCenter"]','[data-cmd="justifyRight"]','[data-cmd="insertOrderedList"]','[data-cmd="insertUnorderedList"]'];secondary.forEach(sel=>qsa(sel).forEach(x=>x.classList.add('tool-secondary')));['#editorImageBtn','#scanInCourseBtn','#insertTableBtn','#freeTextBtn','#drawQuickBtn','#shapesQuickBtn'].forEach(sel=>$(sel.slice(1))?.classList.add('tool-primary'));more.onclick=()=>{card.classList.toggle('toolbar-expanded');more.classList.toggle('active');more.textContent=card.classList.contains('toolbar-expanded')?'Réduire':'••• Plus'};$('drawQuickBtn').onclick=()=>document.querySelector('[data-mode="dessin"]')?.click();$('shapesQuickBtn').onclick=()=>$('geometryBtn')?.click();$('backToSubjectsBtn').onclick=leaveSubject;$('addSubjectNotebookBtn').onclick=openAddSubject;installTableContext();objectContext();};
 })();
+
+
+// ---- NOVA V10 Word-like focus & intuitive classroom patch ----
+(()=>{
+const {$,qsa,debounce}=__mods['src/utils/dom.js'];
+const {state,addSubject,saveNote}=__mods['src/state/store.js'];
+const {openModal,closeModal}=__mods['src/components/modal.js'];
+const {showToast}=__mods['src/components/toast.js'];
+const nb=__mods['src/features/notebooks.js'],ed=__mods['src/features/editor.js'];
+const esc=(s='')=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ---------- matières illimitées + bouton évident ----------
+function openSubjectV10(){
+  openModal(`<h2>＋ Ajouter une matière</h2><p class="modal-desc">Ajoute autant de matières que nécessaire. Elles seront proposées automatiquement dans les devoirs, l'agenda et les cours.</p><div class="form-grid"><input id="v10SubName" placeholder="Ex. Physique-Chimie"><div class="voice-field"><input id="v10SubIcon" value="📘" placeholder="Icône"><input id="v10SubColor" type="color" value="#e7e0ff"></div><button class="primary-btn" id="v10SubSave">Ajouter la matière</button></div>`);
+  $('v10SubSave').onclick=async()=>{const name=$('v10SubName').value.trim();if(!name){showToast('Écris le nom de la matière','info');return;}await addSubject({name,icon:$('v10SubIcon').value||'📘',color:$('v10SubColor').value||'#e7e0ff',chapter:'',archived:false});closeModal();nb.renderSubjects();showToast(`${name} ajoutée`)};
+}
+const prevRenderSubjects=nb.renderSubjects;
+nb.renderSubjects=function(){
+  prevRenderSubjects();
+  const grid=$('notebooksGrid');
+  if(grid && !grid.querySelector('.notebook-add-card')){
+    const add=document.createElement('button');add.className='notebook notebook-add-card';add.innerHTML='<b>＋</b><span>Nouvelle matière</span>';add.onclick=openSubjectV10;grid.appendChild(add);
+  }
+  const addTop=$('addSubjectNotebookBtn');if(addTop)addTop.onclick=openSubjectV10;
+};
+
+// ---------- pages d'une seule matière ----------
+const prevRenderNotes=ed.renderNotesList;
+ed.renderNotesList=function(){
+  const list=$('notesList');if(!list)return prevRenderNotes();
+  const active=state.notes.find(n=>n.id===state.activeNote);const subjectId=active?.subject||$('noteSubject')?.value;
+  if(!document.body.classList.contains('subject-open')||!subjectId)return prevRenderNotes();
+  list.innerHTML='';
+  const notes=state.notes.filter(n=>n.subject===subjectId).sort((a,b)=>(a.pageNumber||1)-(b.pageNumber||1)||a.createdAt-b.createdAt);
+  notes.forEach((n,i)=>{const b=document.createElement('button');b.className='note-item'+(n.id===state.activeNote?' active':'');b.innerHTML=`<span class="page-mini-number">${n.pageNumber||i+1}</span><div><strong>${esc(n.title||`Page ${n.pageNumber||i+1}`)}</strong><small>${esc(state.subjects.find(s=>s.id===n.subject)?.name||'')}</small></div>`;b.onclick=()=>ed.openNote(n.id);list.appendChild(b)});
+};
+
+// ---------- nouvelle page vide, sans texte à effacer ----------
+const prevCreateNote=ed.createNote;
+ed.createNote=async function(subjectId){
+  const n=await prevCreateNote(subjectId);
+  if(n){await saveNote(n.id,{title:'',html:'',pageObjects:n.pageObjects||[],strokes:n.strokes||[]});n.title='';n.html='';}
+  return n;
+};
+
+// ---------- focus Word : zoom feuille prioritaire ----------
+function zoomForFocus(){
+  setTimeout(()=>{
+    if(!document.body.classList.contains('nova-focus-mode'))return;
+    const vp=$('editorViewport'),surface=$('pageSurface');if(!vp||!surface)return;
+    const current=parseInt(($('zoomLabel')?.textContent||'100').replace(/\D/g,''),10)||100;
+    const target=Math.max(80,Math.min(125,Math.floor((vp.clientWidth-90)/900*100)));
+    let steps=Math.round((target-current)/10),btn=steps>0?$('zoomInBtn'):$('zoomOutBtn');
+    for(let i=0;i<Math.abs(steps);i++)btn?.click();
+    setTimeout(()=>surface.scrollIntoView({block:'start',inline:'center'}),80);
+  },140);
+}
+['focusModeBtn','editorFocusBtn'].forEach(id=>$(id)?.addEventListener('click',()=>{
+  setTimeout(()=>{
+    const on=document.body.classList.contains('nova-focus-mode');
+    if(on){zoomForFocus();try{document.documentElement.requestFullscreen?.().catch(()=>{})}catch{}}
+    else if(document.fullscreenElement){document.exitFullscreen?.().catch(()=>{})}
+  },20);
+}));
+
+// ---------- clic libre dans la feuille : "Click and Type" comme Word ----------
+function clickAndType(e){
+  const editor=$('noteEditor');if(!editor||e.target!==editor||document.querySelector('.page-surface.mode-dessin'))return;
+  if(editor.innerText.trim())return; // surtout utile pour feuille vide
+  const r=editor.getBoundingClientRect(),scale=r.width/900,y=(e.clientY-r.top)/Math.max(.01,scale)-70;
+  if(y<20)return;
+  const lines=Math.max(0,Math.min(42,Math.floor(y/36)));
+  if(!editor.innerHTML.trim())editor.innerHTML=Array.from({length:lines},()=>'<div><br></div>').join('')+'<div><br></div>';
+  const last=editor.lastElementChild;if(last){const range=document.createRange(),sel=getSelection();range.selectNodeContents(last);range.collapse(true);sel.removeAllRanges();sel.addRange(range);editor.focus();}
+}
+$('noteEditor')?.addEventListener('pointerdown',clickAndType);
+
+// ---------- génération automatique page suivante ----------
+let paging=false;
+const pageBadge=(()=>{let b=document.querySelector('.page-auto-badge');if(!b){b=document.createElement('div');b.className='page-auto-badge';b.textContent='Nouvelle page créée automatiquement';document.body.appendChild(b)}return b})();
+function caretNearBottom(){
+  const editor=$('noteEditor');if(!editor)return false;const sel=getSelection();if(!sel||!sel.rangeCount)return editor.scrollHeight>editor.clientHeight+4;
+  try{const rect=sel.getRangeAt(0).getBoundingClientRect(),er=editor.getBoundingClientRect();return rect.bottom>er.bottom-95||editor.scrollHeight>editor.clientHeight+4}catch{return false}
+}
+async function makeNextPage(){
+  if(paging||!caretNearBottom())return;paging=true;
+  try{
+    const current=state.notes.find(n=>n.id===state.activeNote);if(!current)return;
+    if(current.autoNextPageId && state.notes.some(n=>n.id===current.autoNextPageId)){await ed.openNote(current.autoNextPageId);return;}
+    const editor=$('noteEditor');let moved=[];
+    while(editor.scrollHeight>editor.clientHeight+3 && editor.children.length>1){const last=editor.lastElementChild;if(!last)break;moved.unshift(last.outerHTML);last.remove();}
+    await saveNote(current.id,{html:editor.innerHTML});
+    const root=current.continuationOf||current.id,nextNo=(current.pageNumber||1)+1;
+    const next=await ed.createNote(current.subject);
+    const base=(current.title||'').replace(/\s·\sp\.\d+$/,'');
+    await saveNote(next.id,{title:base?`${base} · p.${nextNo}`:'',html:moved.join(''),chapterId:current.chapterId||null,continuationOf:root,pageNumber:nextNo});
+    await saveNote(current.id,{continuationOf:root,pageNumber:current.pageNumber||1,autoNextPageId:next.id});
+    pageBadge.classList.add('show');setTimeout(()=>pageBadge.classList.remove('show'),1800);
+    await ed.openNote(next.id);setTimeout(()=>{$('noteEditor')?.focus();ed.renderNotesList()},80);
+  }finally{setTimeout(()=>paging=false,450)}
+}
+$('noteEditor')?.addEventListener('input',debounce(makeNextPage,120));
+$('noteEditor')?.addEventListener('keyup',debounce(makeNextPage,120));
+
+// ---------- Images : cliquer, déplacer directement, redimensionner + actions rapides ----------
+function selectedObject(){const el=$('objectLayer')?.querySelector('.page-object.selected');if(!el)return{};const note=state.notes.find(n=>n.id===state.activeNote);return{el,note,obj:note?.pageObjects?.find(o=>o.id===el.dataset.objectId)}}
+function saveObjects(note){if(note)saveNote(note.id,{pageObjects:note.pageObjects||[]})}
+function addImageControls(){
+  const bar=$('objectContextBar');if(!bar||bar.querySelector('.image-size-controls'))return;
+  const wrap=document.createElement('span');wrap.className='image-size-controls';wrap.innerHTML='<button class="context-chip" data-img-size="smaller">−</button><button class="context-chip" data-img-size="bigger">＋</button><button class="context-chip" data-img-size="width">↔ Large</button><button class="context-chip" data-img-size="center">Centrer</button>';
+  bar.appendChild(wrap);
+  wrap.querySelectorAll('[data-img-size]').forEach(b=>b.onclick=()=>{const{el,note,obj}=selectedObject();if(!obj||obj.type!=='image')return;const act=b.dataset.imgSize;if(act==='smaller'){obj.width=Math.max(140,obj.width*.85);obj.height=Math.max(90,obj.height*.85)}if(act==='bigger'){const ratio=obj.height/obj.width;obj.width=Math.min(820,obj.width*1.15);obj.height=obj.width*ratio}if(act==='width'){const ratio=obj.height/obj.width;obj.width=780;obj.height=Math.min(1050,780*ratio);obj.x=60}if(act==='center')obj.x=Math.max(0,(900-obj.width)/2);saveObjects(note);ed.openNote(note.id)});
+}
+function enableDirectImageDrag(){
+  qsa('#objectLayer .object-image').forEach(el=>{if(el.dataset.v10drag)return;el.dataset.v10drag='1';const body=el.querySelector('.image-body');if(!body)return;
+    body.addEventListener('pointerdown',e=>{if(!el.classList.contains('selected'))return;const note=state.notes.find(n=>n.id===state.activeNote),obj=note?.pageObjects?.find(o=>o.id===el.dataset.objectId);if(!obj)return;e.preventDefault();const sx=e.clientX,sy=e.clientY,ox=obj.x,oy=obj.y,scale=$('pageSurface').getBoundingClientRect().width/900;body.setPointerCapture(e.pointerId);const move=ev=>{obj.x=Math.max(0,Math.min(900-60,ox+(ev.clientX-sx)/scale));obj.y=Math.max(0,Math.min(1273-40,oy+(ev.clientY-sy)/scale));el.style.left=obj.x+'px';el.style.top=obj.y+'px'};const up=()=>{body.removeEventListener('pointermove',move);body.removeEventListener('pointerup',up);saveObjects(note)};body.addEventListener('pointermove',move);body.addEventListener('pointerup',up)});
+  });
+}
+const objLayer=$('objectLayer');if(objLayer)new MutationObserver(()=>{enableDirectImageDrag();addImageControls();const{obj}=selectedObject();const controls=$('objectContextBar')?.querySelector('.image-size-controls');if(controls)controls.style.display=obj?.type==='image'?'inline-flex':'none'}).observe(objLayer,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+addImageControls();enableDirectImageDrag();
+
+// ---------- Tableau : dimensions libres + couleurs ligne/colonne ----------
+function makeTableHTML(rows,cols,opt){
+  let html=`<table class="nova-table" style="--table-border:${opt.border}"><tbody>`;
+  for(let r=0;r<rows;r++){html+='<tr>';for(let c=0;c<cols;c++){const head=(opt.rowHead&&r===0)||(opt.colHead&&c===0);const bg=(opt.rowHead&&r===0)?opt.rowColor:(opt.colHead&&c===0)?opt.colColor:'';html+=`<${head?'th':'td'}${bg?` style="background:${bg}"`:''}><br></${head?'th':'td'}>`}html+='</tr>'}return html+'</tbody></table><p><br></p>';
+}
+function openTableV10(){
+  openModal(`<h2>▦ Insérer un tableau</h2><p class="modal-desc">Choisis librement le nombre de lignes et colonnes, puis personnalise les titres.</p><div class="table-builder"><label>Lignes<input id="tbRows" type="number" min="1" max="30" value="4"></label><label>Colonnes<input id="tbCols" type="number" min="1" max="20" value="4"></label></div><div class="table-style-options"><div class="table-style-row"><label><input id="tbRowHead" type="checkbox" checked> Colorer la 1ère ligne</label><input id="tbRowColor" type="color" value="#e7e0ff"></div><div class="table-style-row"><label><input id="tbColHead" type="checkbox"> Colorer la 1ère colonne</label><input id="tbColColor" type="color" value="#dff5e7"></div><div class="table-style-row"><span>Couleur des bordures</span><input id="tbBorder" type="color" value="#bfc7da"></div><div class="table-presets"><button class="table-preset" data-preset="#e7e0ff,#dff5e7" style="background:linear-gradient(135deg,#e7e0ff 50%,#dff5e7 50%)"></button><button class="table-preset" data-preset="#dcecff,#fff0cf" style="background:linear-gradient(135deg,#dcecff 50%,#fff0cf 50%)"></button><button class="table-preset" data-preset="#ffdbe8,#eee3ff" style="background:linear-gradient(135deg,#ffdbe8 50%,#eee3ff 50%)"></button></div></div><button class="primary-btn" id="tbInsert" style="margin-top:14px;width:100%">Insérer le tableau</button>`);
+  qsa('[data-preset]',$('modalBody')).forEach(b=>b.onclick=()=>{const[a,c]=b.dataset.preset.split(',');$('tbRowColor').value=a;$('tbColColor').value=c;$('tbColHead').checked=true});
+  $('tbInsert').onclick=()=>{const rows=Math.max(1,Math.min(30,Number($('tbRows').value)||1)),cols=Math.max(1,Math.min(20,Number($('tbCols').value)||1)),opt={rowHead:$('tbRowHead').checked,colHead:$('tbColHead').checked,rowColor:$('tbRowColor').value,colColor:$('tbColColor').value,border:$('tbBorder').value};closeModal();$('noteEditor').focus();document.execCommand('insertHTML',false,makeTableHTML(rows,cols,opt));$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}));showToast(`Tableau ${rows} × ${cols} ajouté`)};
+}
+function installTableColorTools(){
+  const bar=$('tableContextBar');if(!bar||bar.querySelector('.table-context-extra'))return;const x=document.createElement('span');x.className='table-context-extra';x.innerHTML='<label>Ligne <input type="color" id="tbCtxRow" value="#e7e0ff"></label><label>Colonne <input type="color" id="tbCtxCol" value="#dff5e7"></label><label>Bordure <input type="color" id="tbCtxBorder" value="#bfc7da"></label>';bar.appendChild(x);
+  const cell=()=>{const sel=getSelection(),node=sel?.anchorNode,el=node?.nodeType===1?node:node?.parentElement;return el?.closest?.('#noteEditor td,#noteEditor th')};
+  $('tbCtxRow').oninput=e=>{const c=cell();if(!c)return;[...c.parentElement.cells].forEach(x=>x.style.background=e.target.value);$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}))};
+  $('tbCtxCol').oninput=e=>{const c=cell();if(!c)return;const table=c.closest('table'),idx=[...c.parentElement.cells].indexOf(c);[...table.rows].forEach(r=>{if(r.cells[idx])r.cells[idx].style.background=e.target.value});$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}))};
+  $('tbCtxBorder').oninput=e=>{const c=cell();if(!c)return;const table=c.closest('table');table.style.setProperty('--table-border',e.target.value);$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}))};
+}
+
+// ---------- branchement après l'éditeur V9 ----------
+const prevInit=ed.initEditor;
+ed.initEditor=function(){
+  prevInit();
+  // remplacer le bouton Tableau pour supprimer la limite 8x8
+  const old=$('insertTableBtn');if(old){const fresh=old.cloneNode(true);old.replaceWith(fresh);fresh.id='insertTableBtn';fresh.onclick=openTableV10;fresh.classList.add('tool-primary')}
+  installTableColorTools();addImageControls();enableDirectImageDrag();
+  // focus : secondaire par défaut, feuille au centre
+  if($('fitPageBtn'))$('fitPageBtn').title='Ajuster la feuille à l’écran';
+};
+})();
+
 
 // ---- src/app.js ----
 (()=>{
