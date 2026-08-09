@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7c5cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="NOVA School" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>NOVA School</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/editor.css" />
+  <link rel="stylesheet" href="styles/premium.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/complete.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+</head>
+<body>
+  <div id="iosLaunchGuard" class="ios-launch-guard" hidden>
+    <div class="ios-launch-card">
+      <div class="ios-launch-icon">📱</div>
+      <h2>NOVA doit être ouverte comme une app web</h2>
+      <p>Sur iPad, n’ouvre pas NOVA depuis l’app Fichiers. Ouvre son adresse HTTPS dans Safari, puis touche <b>Partager</b> → <b>Sur l’écran d’accueil</b>.</p>
+      <p class="ios-launch-small">Cette règle permet à la caméra, au micro, au stockage et à l’installation PWA de fonctionner correctement.</p>
+    </div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">NOVA<span>✦</span><small>School</small></div>
+      <nav id="sideNav">
+        <button class="nav-btn active" data-view="home">🏠 <span>Accueil</span></button>
+        <button class="nav-btn" data-view="notebooks">📚 <span>Cahiers</span></button>
+        <button class="nav-btn" data-view="capture">📷 <span>Capturer</span></button>
+        <button class="nav-btn" data-view="learn">🧠 <span>Apprendre</span></button>
+        <button class="nav-btn" data-view="homework">📝 <span>Devoirs</span></button>
+        <button class="nav-btn" data-view="agenda">📅 <span>Agenda</span></button>
+        <button class="nav-btn" data-view="search">🔎 <span>Recherche</span></button>
+        <button class="nav-btn" data-view="assistant">✨ <span>Assistant NOVA</span></button>
+        <button class="nav-btn" data-view="trash">🗑️ <span>Corbeille</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile-card">
+          <div class="avatar" id="profileAvatar">É</div>
+          <div><strong id="profileName">Élève</strong><small id="profileClass">6e</small></div>
+          <button class="profile-gear" title="Réglages">⚙</button>
+        </div>
+        <div class="storage-card">
+          <div><strong>Espace de stockage</strong><span>☁</span></div>
+          <small>2,4 Go / 10 Go</small>
+          <div class="storage-bar"><i></i></div>
+          <b>24%</b>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">NOVA School</p>
+          <h1 id="viewTitle">Bonjour 👋</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" id="backupBtn">💾 Sauvegarde</button>
+          <label class="ghost-btn" for="restoreInput" style="cursor:pointer">📥 Restaurer</label>
+          <input type="file" id="restoreInput" accept="application/json" hidden>
+          <button class="ghost-btn adhd-toggle" id="adhdModeBtn" title="Réduire les distractions">🧠 Mode Focus</button>
+          <button class="icon-btn">🔔</button>
+        </div>
+      </header>
+
+      <section id="home" class="view active premium-home">
+        <div class="home-top-grid">
+          <article class="hello-card">
+            <div>
+              <h1>Bonjour <span id="helloName">!</span> <span class="wave">👋</span></h1>
+              <p id="todayLabel">Ta journée est prête.</p>
+            </div>
+            <button class="notification-bubble" title="Notifications">🔔<span></span></button>
+          </article>
+
+          <div id="homeSubjects" class="home-subjects"></div>
+        </div>
+
+        <div class="home-main-grid">
+          <article class="home-card day-card">
+            <div class="card-title-row"><h2>🗓️ Ma journée</h2><button class="link-arrow" data-view-jump="agenda">Voir l'emploi du temps →</button></div>
+            <div class="schedule-list">
+              <div class="schedule-row"><time>08:30</time><i class="schedule-dot math"></i><strong>Mathématiques</strong><span>Salle 12</span></div>
+              <div class="schedule-row"><time>09:30</time><i class="schedule-dot french"></i><strong>Français</strong><span>Salle 05</span></div>
+              <div class="schedule-row"><time>10:30</time><i class="schedule-dot history"></i><strong>Histoire-Géo</strong><span>Salle 08</span></div>
+              <div class="schedule-row"><time>11:30</time><i class="schedule-dot svt"></i><strong>SVT</strong><span>Salle 03</span></div>
+            </div>
+          </article>
+
+          <article class="home-card todo-card">
+            <div class="card-title-row"><h2>À faire aujourd'hui</h2><span id="homeworkCount" class="count-badge">0</span></div>
+            <div id="homeworkPreview" class="stack-list premium-todos"></div>
+            <button class="link-arrow" data-view-jump="homework">Voir tous mes devoirs →</button>
+          </article>
+
+          <article class="home-card notification-card">
+            <div class="card-title-row"><h2>Notifications</h2><button class="icon-mini">•••</button></div>
+            <div class="notification-list">
+              <div><span class="notif-icon pink-soft">◉</span><p><b>Nouveau document ajouté en Maths</b><small>Il y a 10 min</small></p></div>
+              <div><span class="notif-icon coral-soft">▣</span><p><b>Rappel : devoir d'Histoire vendredi</b><small>Il y a 1 h</small></p></div>
+              <div><span class="notif-icon amber-soft">☆</span><p><b>Tu as 3 éléments à revoir</b><small>Il y a 2 h</small></p></div>
+            </div>
+          </article>
+
+          <article class="home-card nova-helper-card">
+            <div class="helper-glow"></div>
+            <div class="helper-head">✦ <h2>Assistant NOVA</h2></div>
+            <p>Ton assistant scolaire intelligent</p>
+            <div class="helper-message">Besoin d'aide pour<br>comprendre un cours ?</div>
+            <div class="nova-bot">✦</div>
+            <button class="helper-btn" data-view-jump="assistant">Demander à NOVA</button>
+          </article>
+        </div>
+
+        <div class="home-quickbar">
+          <button data-action="new-note"><span>＋</span> Nouveau cours</button>
+          <button id="homeScanBtn" data-view-jump="capture"><span>▣</span> Scanner un document</button>
+          <button id="dictationBtn"><span>🎙</span> Dictée vocale</button>
+          <button data-view-jump="capture"><span>📷</span> Photo du tableau</button>
+          <button data-view-jump="capture"><span>▤</span> Importer PDF</button>
+          <button data-view-jump="assistant"><span>✦</span> Assistant NOVA</button>
+        </div>
+
+        <div class="feature-showcase">
+          <article class="feature-panel board-feature">
+            <div class="feature-ribbon blue-ribbon">Photo du tableau</div>
+            <div class="chalkboard">
+              <h3>Théorème de Pythagore</h3>
+              <div class="triangle-demo"><span>a</span><i></i><b>c</b><em>b</em></div>
+              <p>a² + b² = c²</p>
+              <button data-view-jump="capture">📷</button>
+            </div>
+            <div class="feature-caption"><b>Document détecté</b><small>Mathématiques — Théorème de Pythagore</small><button data-view-jump="notebooks">Ajouter à un cours →</button></div>
+          </article>
+
+          <article class="feature-panel audio-feature">
+            <div class="feature-ribbon pink-ribbon">Notes + audio synchronisé</div>
+            <div class="audio-player"><button>▶</button><div class="waveform">▁▃▆▂▇▄▂▅▇▃▁▆▂▅▃▁</div><span>12:34 / 20:00</span></div>
+            <div class="history-note"><h3>La Révolution française</h3><p>• 1789 : prise de la Bastille</p><p>• 1792 : proclamation de la République</p><mark>• 1799 : Coup d'État de Napoléon</mark></div>
+            <p class="hint">Touchez vos notes pour écouter l'audio enregistré au même moment.</p>
+            <div class="timeline"><span></span><i></i><b></b></div>
+          </article>
+
+          <article class="feature-panel assistant-feature">
+            <div class="feature-ribbon purple-ribbon">Assistant scolaire</div>
+            <div class="selected-text"><small>Tu as sélectionné :</small><b>Le complément d'objet direct complète directement le verbe.</b></div>
+            <h3>Que veux-tu faire ?</h3>
+            <button data-view-jump="assistant">✦ Expliquer simplement</button>
+            <button data-view-jump="assistant">💡 Donner un exemple</button>
+            <button data-view-jump="assistant">✎ Mettre au propre</button>
+            <button data-view-jump="learn">▣ Créer une fiche</button>
+            <button data-view-jump="learn">☆ Faire réviser</button>
+          </article>
+
+          <article class="feature-panel mindmap-feature">
+            <div class="feature-ribbon cyan-ribbon">Cartes mentales</div>
+            <div class="mindmap">
+              <div class="mind-center">La Révolution<br>française</div>
+              <div class="mind-node cause">Causes<small>Inégalités<br>Crise financière</small></div>
+              <div class="mind-node dates">Dates importantes<small>1789 · 1792 · 1799</small></div>
+              <div class="mind-node people">Personnages<small>Louis XVI<br>Robespierre<br>Napoléon</small></div>
+              <div class="mind-node result">Conséquences<small>République<br>Droits</small></div>
+            </div>
+            <button class="panel-plus" data-view-jump="learn">＋</button>
+          </article>
+
+          <article class="feature-panel revision-feature">
+            <div class="feature-ribbon coral-ribbon">Révisions & fiches</div>
+            <div class="revision-sheet">
+              <small>Fiche de révision</small><h3>Le récit ☆</h3>
+              <div class="revision-box blue-box"><b>Définition</b><p>Un récit raconte des faits ou des aventures dans un ordre précis.</p></div>
+              <div class="revision-box green-box"><b>Éléments importants</b><p>• Des personnages<br>• Un lieu<br>• Une époque<br>• Des événements</p></div>
+            </div>
+            <div class="revision-nav"><button>‹ Retour</button><span>1/12</span><button class="next">Suivant →</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="notebooks" class="view">
+        <div class="notebook-heading">
+          <div>
+            <p class="eyebrow">Cahiers numériques</p>
+            <h2>Mes cahiers</h2>
+          </div>
+          <div class="heading-actions">
+            <select id="schoolYearSelect" class="ghost-btn"></select>
+            <button class="ghost-btn" id="addChapterBtn">＋ Chapitre</button>
+            <button class="ghost-btn" id="focusModeBtn" title="Mode plein écran">⛶ Plein écran</button>
+            <button class="primary-btn" data-action="new-note">＋ Nouvelle page</button>
+          </div>
+        </div>
+        <div id="notebooksGrid" class="notebooks-grid notebook-strip"></div>
+        <div class="editor-layout">
+          <aside class="pages-panel">
+            <div class="pages-panel-head"><h3>Pages</h3><div><button id="newPageInSubjectBtn" title="Nouvelle page">＋</button><button id="duplicatePageBtn" title="Dupliquer la page">⧉</button><button id="collapsePagesBtn" title="Réduire">‹</button></div></div>
+            <div id="notesList" class="notes-list"></div>
+          </aside>
+          <section class="editor-card">
+            <div class="editor-topline">
+              <div class="editor-toolbar">
+                <button data-cmd="undo" title="Annuler">↶</button>
+                <button data-cmd="redo" title="Rétablir">↷</button>
+                <span class="toolbar-divider"></span>
+                <button data-cmd="bold" title="Gras"><b>B</b></button>
+                <button data-cmd="italic" title="Italique"><i>I</i></button>
+                <button data-cmd="underline" title="Souligner"><u>U</u></button>
+                <button data-cmd="hiliteColor" data-value="#fff2a8" title="Surligner">🖍️</button>
+                <button data-cmd="insertUnorderedList" title="Liste à puces">☷</button>
+                <button data-cmd="insertOrderedList" title="Liste numérotée">1.</button>
+                <button id="checkListBtn" title="Liste à cocher">☑</button>
+                <button data-cmd="justifyLeft" title="Aligner à gauche">≡</button>
+                <button data-cmd="justifyCenter" title="Centrer">≣</button>
+                <button data-cmd="justifyRight" title="Aligner à droite">≡→</button>
+                <select id="fontSizeSelect" class="toolbar-select" title="Taille du texte"><option value="14">14</option><option value="16" selected>16</option><option value="18">18</option><option value="22">22</option><option value="28">28</option><option value="36">36</option></select>
+                <label class="text-color-tool" title="Couleur du texte"><input type="color" id="textColorInput" value="#292737"><span>A</span></label>
+                <button id="linkBtn" title="Ajouter un lien">🔗</button>
+                <span class="toolbar-divider"></span>
+                <select id="blockStyle" class="toolbar-select" title="Style de bloc">
+                  <option value="paragraph">Texte</option>
+                  <option value="title">Titre</option>
+                  <option value="subtitle">Sous-titre</option>
+                  <option value="definition">Définition</option>
+                  <option value="example">Exemple</option>
+                  <option value="important">À retenir</option>
+                </select>
+                <button id="freeTextBtn" title="Zone de texte libre">T＋</button>
+                <button id="editorImageBtn" title="Ajouter une image">🖼️ Image</button>
+                <button id="scanInCourseBtn" title="Scanner une feuille dans ce cours">📄 Scanner</button>
+                <button id="boardInCourseBtn" title="Photo du tableau dans ce cours">📷 Tableau</button>
+                <button id="ocrCourseBtn" title="Reconnaître le texte du document de fond">🔎 OCR</button>
+                <button id="pdfInCourseBtn" title="Importer un PDF dans ce cours">📑 PDF</button>
+                <button id="postItBtn" title="Ajouter un post-it">🗒️ Post-it</button>
+                <button id="stickerBtn" title="Stickers scolaires">⭐ Sticker</button>
+                <button id="geometryBtn" title="Outils géométriques">📐 Géométrie</button>
+                <button id="removeDocBgBtn" class="hidden" title="Retirer le document de fond">✕ Document</button>
+                <span class="toolbar-divider"></span>
+                <button id="exportPdfBtn" title="Exporter le cours en PDF">⬇️ PDF</button>
+                <button id="shareCourseBtn" title="Partager ou envoyer le PDF">✉️ Partager</button>
+                <button id="editorDictateBtn" title="Dicter dans le cours">🎙️ Dicter</button>
+                <button id="recordAudioBtn" title="Enregistrer un audio">⏺ Audio</button>
+                <button id="audioMarkerBtn" title="Poser un repère lié au moment audio">🔖 Repère audio</button>
+                <button id="readAloudBtn" title="Lire le cours à voix haute">🔊 Lire</button>
+                <button id="missingMarkerBtn" title="Marquer une partie à compléter">❓ À compléter</button>
+                <button id="insertTableBtn" title="Insérer un tableau">▦ Tableau</button>
+                <button id="mathToolsBtn" title="Symboles mathématiques">∑ Maths</button>
+                <button id="historyBtn" title="Historique des versions">🕘</button>
+                <button id="cleanNoteBtn" title="Mettre au propre">✨</button>
+                <button id="deleteNoteBtn" title="Déplacer à la corbeille">🗑️</button>
+              </div>
+              <div class="editor-actions">
+                <button class="icon-soft" id="fitPageBtn" title="Ajuster à la page">▣</button>
+                <button class="icon-soft" id="editorFocusBtn" title="Plein écran">⛶</button>
+              </div>
+            </div>
+            <div class="note-meta">
+              <select id="noteSubject"></select>
+              <select id="noteChapter"><option value="">Sans chapitre</option></select>
+              <input id="noteTitle" placeholder="Titre du cours" />
+              <select id="pageStyle">
+                <option value="lined">Lignes</option>
+                <option value="seyes">Seyès</option>
+                <option value="grid">Petits carreaux</option>
+                <option value="dots">Pointillés</option>
+                <option value="plain">Blanc</option>
+              </select>
+            </div>
+            <div class="focus-support-bar" id="focusSupportBar">
+              <div class="focus-goal">
+                <span>🎯 Mon objectif</span>
+                <input id="focusGoalInput" placeholder="Ex. noter les 3 idées importantes" />
+              </div>
+              <div class="focus-timer">
+                <button class="timer-preset" data-minutes="10">10 min</button>
+                <button class="timer-preset active" data-minutes="15">15 min</button>
+                <button class="timer-preset" data-minutes="20">20 min</button>
+                <strong id="focusTimerLabel">15:00</strong>
+                <button id="focusTimerStart">▶</button>
+                <button id="focusTimerReset">↺</button>
+              </div>
+              <button class="recenter-btn" id="recenterBtn">🧭 Je me recentre</button>
+              <button class="course-mode-btn" id="courseModeBtn">🎓 Mode cours</button>
+            </div>
+            <div class="mode-toggle">
+              <button class="mode-btn active" data-mode="texte">T Texte</button>
+              <button class="mode-btn" data-mode="dessin">✏️ Dessin</button>
+              <span class="mode-help">Clique sur une image ou un post-it pour le déplacer et le redimensionner.</span>
+            </div>
+            <div class="audio-tracks hidden" id="audioTracksPanel">
+              <div class="audio-tracks-head"><strong>🎧 Audio du cours</strong><span id="audioRecordStatus">Aucun enregistrement en cours</span></div>
+              <div id="audioTracksList"></div>
+            </div>
+            <div class="draw-toolbar hidden" id="drawToolbar">
+              <button class="tool-btn active" data-tool="pen">✏️ Stylo</button>
+              <button class="tool-btn" data-tool="highlighter">🖍️ Surligneur</button>
+              <button class="tool-btn" data-tool="eraser">⌫ Gomme</button>
+              <select id="eraserMode" class="toolbar-select" title="Mode de gomme"><option value="stroke">Trait</option><option value="partial">Partielle</option></select>
+              <button class="tool-btn" data-tool="lasso">⌁ Lasso</button>
+              <button class="shape-btn" data-shape="line">／ Ligne</button>
+              <button class="shape-btn" data-shape="arrow">→ Flèche</button>
+              <button class="shape-btn" data-shape="rect">▭ Rectangle</button>
+              <button class="shape-btn" data-shape="circle">○ Cercle</button>
+              <span class="tool-sep"></span>
+              <button class="color-swatch active" style="background:#242334" data-color="#242334"></button>
+              <button class="color-swatch" style="background:#e0245e" data-color="#e0245e"></button>
+              <button class="color-swatch" style="background:#2f7bff" data-color="#2f7bff"></button>
+              <button class="color-swatch" style="background:#22b573" data-color="#22b573"></button>
+              <button class="color-swatch" style="background:#8b5cf6" data-color="#8b5cf6"></button>
+              <button class="color-swatch" style="background:#f59e0b" data-color="#f59e0b"></button>
+              <span class="tool-sep"></span>
+              <label class="width-control">Épaisseur <input id="strokeWidth" type="range" min="1" max="10" value="3"></label>
+              <button id="handwritingToTextBtn" title="Essayer de convertir l’écriture en texte">✍→T</button>
+              <button id="undoStrokeBtn">↶ Annuler</button>
+              <button id="redoStrokeBtn">↷ Rétablir</button>
+              <button id="clearStrokesBtn">Effacer dessin</button>
+            </div>
+            <div class="editor-viewport" id="editorViewport">
+              <div class="page-stage" id="pageStage">
+                <div class="page-surface mode-texte" id="pageSurface">
+                  <div id="documentUnderlay" class="document-underlay hidden"><img id="documentUnderlayImage" alt="Document scanné"></div>
+                  <div id="noteEditor" class="note-editor lined" contenteditable="true">
+                    <h2>Le récit</h2>
+                    <p>Commence à écrire ici…</p>
+                  </div>
+                  <canvas id="noteCanvas" class="note-canvas"></canvas>
+                  <div id="objectLayer" class="object-layer"></div>
+                  <div id="lassoRect" class="lasso-rect hidden"></div>
+                  <div id="strokeSelectionBox" class="stroke-selection-box hidden"><span>Déplacer la sélection</span><button id="deleteStrokeSelection" title="Supprimer">×</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="editor-footer">
+              <span id="saveStatus">Sauvegarde automatique</span>
+              <div class="zoom-controls">
+                <button id="zoomOutBtn">−</button><span id="zoomLabel">100 %</span><button id="zoomInBtn">＋</button>
+              </div>
+              <button class="primary-btn" id="saveNoteBtn">Enregistrer</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="capture" class="view">
+        <div class="section-head">
+          <div><p class="eyebrow">Documents papier → numérique</p><h2>Capturer un document</h2></div>
+        </div>
+        <div class="capture-grid">
+          <label class="capture-card">
+            <input type="file" id="scanInput" accept="image/*" capture="environment" hidden>
+            <div class="capture-icon">📄</div>
+            <h3>Scanner une feuille</h3>
+            <p>Prends une photo d'un exercice ou d'une fiche et écris ensuite dessus.</p>
+            <span class="fake-btn">Choisir une image</span>
+          </label>
+          <label class="capture-card">
+            <input type="file" id="boardInput" accept="image/*" hidden>
+            <div class="capture-icon">🧑‍🏫</div>
+            <h3>Photo du tableau</h3>
+            <p>Ajoute rapidement une photo du tableau au cours du jour.</p>
+            <span class="fake-btn">Importer</span>
+          </label>
+          <label class="capture-card">
+            <input type="file" id="pdfInput" accept=".pdf,image/*" hidden>
+            <div class="capture-icon">📎</div>
+            <h3>Importer un document</h3>
+            <p>Ajoute un PDF, une fiche ou une image fournie par le professeur.</p>
+            <span class="fake-btn">Importer</span>
+          </label>
+        </div>
+
+        <div id="documentWorkspace" class="document-workspace hidden">
+          <div class="document-toolbar">
+            <strong>Document</strong>
+            <div>
+              <button id="addTextOverlayBtn">＋ Zone de texte</button>
+              <button id="ocrDocumentBtn">🔎 Lire le texte (OCR)</button>
+              <button id="addDocToCourseBtn">📚 Ajouter au cours ouvert</button>
+              <button id="clearDocumentBtn">Fermer</button>
+            </div>
+          </div>
+          <div id="documentCanvas" class="document-canvas">
+            <img id="documentImage" alt="Document importé">
+          </div>
+          <div id="ocrPanel" class="ocr-panel hidden"><div class="section-head" style="margin:0 0 8px"><h3>Texte reconnu</h3><button class="ghost-btn" id="copyOcrBtn">Copier</button></div><textarea id="ocrText" placeholder="Le texte reconnu apparaîtra ici…"></textarea></div>
+        </div>
+        <div class="section-head"><div><h2>Mes documents</h2><p class="muted">Scans, photos du tableau et fichiers importés.</p></div></div>
+        <div id="documentLibrary" class="document-library"></div>
+      </section>
+
+      <section id="learn" class="view">
+        <div class="section-head"><div><p class="eyebrow">Révisions intelligentes</p><h2>Apprendre</h2></div><div class="heading-actions"><button class="ghost-btn" id="learnFromCourseBtn">✨ Depuis le cours ouvert</button><button class="primary-btn" id="manualFlashcardBtn">＋ Flashcard</button></div></div>
+        <div class="learn-grid">
+          <article class="learn-card purple"><span>🧠</span><h3>Fiches de révision</h3><p>Crée une fiche claire depuis ton cours, puis complète-la avec tes propres mots.</p><button id="revisionSheetsBtn">Ouvrir</button></article>
+          <article class="learn-card green"><span>🃏</span><h3>Flashcards</h3><p>Révision espacée : NOVA te repropose ce qui est difficile au bon moment.</p><button id="flashcardBtn">Réviser</button></article>
+          <article class="learn-card orange"><span>🎯</span><h3>Quiz</h3><p>QCM généré localement à partir de tes cartes, sans envoyer tes cours sur Internet.</p><button id="quizBtn">Commencer</button></article>
+          <article class="learn-card cyan"><span>🕸️</span><h3>Cartes mentales</h3><p>Crée, déplace et organise les idées d'un chapitre visuellement.</p><button id="mindmapBtn">Créer / ouvrir</button></article>
+        </div>
+        <div class="learn-stats" id="learnStats"></div>
+        <div id="learningArea" class="panel learning-area">
+          <div class="empty-state">🧠 Choisis un outil de révision. Tes progrès sont sauvegardés automatiquement.</div>
+        </div>
+      </section>
+
+      <section id="homework" class="view">
+        <div class="section-head">
+          <div><p class="eyebrow">Organisation</p><h2>Mes devoirs</h2></div>
+          <button class="primary-btn" id="addHomeworkBtn">＋ Ajouter un devoir</button>
+        </div>
+        <div id="homeworkList" class="homework-list"></div>
+      </section>
+
+      <section id="agenda" class="view">
+        <div class="section-head"><div><p class="eyebrow">Semaine</p><h2>Agenda</h2></div><button class="primary-btn" id="addAgendaEventBtn">＋ Ajouter</button></div>
+        <div id="agendaWeek" class="week-grid"></div>
+      </section>
+
+      <section id="search" class="view">
+        <div class="search-hero">
+          <h2>Retrouver n'importe quoi</h2>
+          <p>Recherche dans tes cours, devoirs et documents.</p>
+          <input id="globalSearch" placeholder="Ex. fractions, Napoléon, récit…" />
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </section>
+
+      <section id="assistant" class="view">
+        <div class="assistant-layout">
+          <div class="assistant-card">
+            <div class="nova-orb">✦</div>
+            <h2>Assistant NOVA</h2>
+            <p>Je t'aide à comprendre, corriger ou réviser sans faire le travail à ta place.</p>
+            <button class="ghost-btn assistant-current-course" id="assistantUseCourse">📚 Utiliser le cours ouvert</button>
+            <textarea id="assistantInput" placeholder="Colle une phrase, une consigne ou une partie de ton cours…"></textarea>
+            <div class="assistant-actions">
+              <button data-ai="simple">🧒 Expliquer simplement</button>
+              <button data-ai="example">💡 Donner un exemple</button>
+              <button data-ai="clean">🧹 Mettre au propre</button>
+              <button data-ai="spell">🔤 Corriger</button>
+              <button data-ai="review">🧠 Faire réviser</button>
+              <button data-ai="summary">📌 Résumer</button>
+            </div>
+          </div>
+          <div class="assistant-result panel">
+            <h3>Résultat</h3>
+            <div id="assistantResult">Choisis une action pour voir le résultat ici.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trash" class="view">
+        <div class="section-head">
+          <div><p class="eyebrow">Corbeille</p><h2>Éléments supprimés</h2></div>
+        </div>
+        <p class="muted">Les éléments supprimés restent ici 30 jours avant suppression définitive automatique.</p>
+        <div id="trashList" class="homework-list" style="margin-top:16px"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <input type="file" id="editorImageInput" accept="image/*" hidden>
+  <input type="file" id="scanInCourseInput" accept="image/*" capture="environment" hidden>
+  <input type="file" id="boardInCourseInput" accept="image/*" capture="environment" hidden>
+  <input type="file" id="pdfInCourseInput" accept="application/pdf" hidden>
+  <script type="module" src="src/app.js"></script>
+  <script>
+    (function(){
+      const guard=document.getElementById('iosLaunchGuard');
+      if(location.protocol==='file:'){ guard.hidden=false; document.documentElement.classList.add('file-launch'); }
+      const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)|| (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+      if(isIOS) document.documentElement.classList.add('is-ios');
+    })();
+  </script>
+</body>
+</html>
