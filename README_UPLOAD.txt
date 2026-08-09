@@ -1,5 +1,8 @@
-NOVA School V8.1 — GitHub Pages
+NOVA SCHOOL V9 — 28 améliorations validées
 
-Remplacez les fichiers du dépôt par le CONTENU de ce dossier. index.html doit rester à la racine.
-GitHub Pages: main / (root).
-Après mise à jour, attendre le déploiement puis faire un rechargement forcé.
+1. Dans GitHub > nova-school > Add file > Upload files.
+2. Glisse index.html, manifest.json, sw.js et le dossier icons.
+3. Commit changes.
+4. Attends le déploiement GitHub Pages puis recharge avec Ctrl+F5.
+
+Cette version conserve IndexedDB et les données existantes du même domaine.

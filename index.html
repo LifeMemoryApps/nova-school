@@ -261,6 +261,33 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
 .text-color-tool{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;position:relative;font-weight:900}.text-color-tool input{position:absolute;inset:0;opacity:0;cursor:pointer}.text-color-tool span{border-bottom:3px solid currentColor;line-height:20px}.check-line{padding:4px 0}
 .sticker-picker,.geometry-picker{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.sticker-picker button,.geometry-picker button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px;text-align:left}.sticker-body{height:calc(100% - 28px);display:grid;place-items:center;padding:10px;font-weight:900;font-size:18px;background:linear-gradient(135deg,#fff,#fff8da);border-radius:0 0 10px 10px}.ruler-body{height:calc(100% - 28px);position:relative;background:rgba(255,225,93,.6);border:2px solid #d4a900}.ruler-body i{position:absolute;bottom:0;width:1px;height:45%;background:#64520b}.ruler-body i:nth-child(2n){height:65%}.ruler-body i small{position:absolute;top:-16px;transform:translateX(-50%);font-style:normal;font-size:9px}.protractor-body{height:calc(100% - 28px);position:relative;border:3px solid rgba(72,134,227,.65);border-bottom-width:10px;border-radius:220px 220px 0 0;background:repeating-conic-gradient(from 270deg at 50% 100%,rgba(57,105,190,.3) 0deg 1deg,transparent 1deg 10deg);opacity:.9}.protractor-body span,.protractor-body b,.protractor-body em{position:absolute;bottom:5px;font-size:10px}.protractor-body span{left:4px}.protractor-body b{left:48%;top:8px}.protractor-body em{right:4px;font-style:normal}
 
+
+/* NOVA V9 — 28 améliorations validées */
+:root{--course-font-size:19px}
+.note-editor{font-size:var(--course-font-size)!important;line-height:1.78!important;padding:66px 76px!important}
+.note-editor p,.note-editor li,.note-editor td{font-size:inherit;line-height:inherit}.note-editor h1{font-size:32px}.note-editor h2{font-size:26px}.note-editor h3{font-size:22px}
+/* alléger la rédaction */
+.focus-support-bar{display:none!important}.adhd-mode .focus-support-bar,.course-focus .focus-support-bar{display:flex!important}
+.editor-card:not(.toolbar-expanded) .tool-secondary{display:none!important}.toolbar-more-toggle.active{background:#ede7ff!important;color:#5f43d8!important}
+.editor-toolbar{gap:6px}.editor-toolbar button{min-height:42px}.editor-toolbar .tool-primary{font-weight:750}
+/* une matière à la fois */
+.subject-open #notebooksGrid{display:none!important}.subject-open .notebook-heading .eyebrow{display:none}.subject-open .notebook-heading h2{font-size:24px}.subject-open #backToSubjectsBtn{display:inline-flex!important}.subject-open #addSubjectNotebookBtn{display:none!important}
+#backToSubjectsBtn{display:none}.notebook-strip{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));max-height:210px;overflow:auto}.notebook-strip .notebook{min-height:78px!important}.notebook-strip .notebook strong{margin-top:8px!important}
+/* image / texte : manipulation iPad */
+.object-text{background:transparent!important}.object-text .textbox-body{background:transparent!important}.page-object.selected{border:2px solid #7657f7!important}.resize-handle{display:none}.page-object.selected .resize-handle{display:block;position:absolute;width:24px;height:24px;background:#7657f7;border:4px solid #fff;border-radius:50%;z-index:20;touch-action:none}.grip-se{right:-12px;bottom:-12px;cursor:nwse-resize}.grip-sw{left:-12px;bottom:-12px;cursor:nesw-resize}.grip-ne{right:-12px;top:-12px;cursor:nesw-resize}.grip-nw{left:-12px;top:-12px;cursor:nwse-resize}
+.object-image .object-drag-handle{background:rgba(255,255,255,.94)}.write-on-image{background:#7657f7!important;color:white!important;padding:2px 8px!important;width:auto!important}
+/* barre contextuelle */
+#objectContextBar{display:none;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfaff;position:sticky;top:0;z-index:12}#objectContextBar.show{display:flex}#objectContextBar b{margin-right:auto}.context-chip{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px}.transparent-chip.active{outline:2px solid #7657f7}
+/* tableau Word-like */
+.table-grid-picker{display:grid;grid-template-columns:repeat(8,32px);gap:5px;margin:14px 0}.table-grid-picker button{width:32px;height:32px;border:1px solid #d8d4e6;background:#fff;border-radius:5px}.table-grid-picker button.hot{background:#e8e0ff;border-color:#7657f7}.table-pick-label{font-weight:800;color:#5d4ad0}.nova-table{table-layout:auto!important;width:auto!important;min-width:65%;font-size:inherit}.nova-table td,.nova-table th{min-width:100px;min-height:42px;padding:10px 12px;vertical-align:top}.table-context-bar{display:none;gap:6px;flex-wrap:wrap;padding:8px 12px;background:#f5f1ff;border-bottom:1px solid #ded7f8}.table-context-bar.show{display:flex}.table-context-bar button{border:1px solid #dcd6f0;background:#fff;border-radius:9px;padding:7px 9px}
+/* Devoir rapide */
+.voice-field{display:grid;grid-template-columns:1fr 46px;gap:7px;align-items:center}.voice-field .mic-btn{height:46px;border:0;border-radius:12px;background:#7657f7;color:#fff;font-size:20px}.voice-field textarea{min-height:110px}.form-grid select,.form-grid input,.form-grid textarea{font-size:16px}
+/* toolbar catégories */
+.quick-tool-label{font-size:11px;color:#817b92;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding-left:4px}
+/* iPad */
+@media(pointer:coarse){.editor-toolbar button,.mode-btn,.tool-btn,.shape-btn{min-width:46px;min-height:46px}.object-drag-handle{height:36px}.image-body,.textbox-body,.postit-body{height:calc(100% - 36px)}.page-object.selected .resize-handle{width:28px;height:28px}.note-editor{font-size:20px!important}}
+@media(max-width:900px){.note-editor{padding:52px 48px!important}.notebook-heading .heading-actions{gap:6px}.heading-actions #schoolYearSelect{display:none}}
+
 </style>
 </head>
 <body>
@@ -428,6 +455,8 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
             <h2>Mes cahiers</h2>
           </div>
           <div class="heading-actions">
+            <button class="ghost-btn" id="backToSubjectsBtn">← Mes matières</button>
+            <button class="ghost-btn" id="addSubjectNotebookBtn">＋ Matière</button>
             <select id="schoolYearSelect" class="ghost-btn"></select>
             <button class="ghost-btn" id="addChapterBtn">＋ Chapitre</button>
             <button class="ghost-btn" id="focusModeBtn" title="Mode plein écran">⛶ Plein écran</button>
@@ -468,7 +497,9 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
                   <option value="example">Exemple</option>
                   <option value="important">À retenir</option>
                 </select>
-                <button id="freeTextBtn" title="Zone de texte libre">T＋</button>
+                <button id="freeTextBtn" class="tool-primary" title="Zone de texte libre">T＋ Texte</button>
+                <button id="drawQuickBtn" class="tool-primary" title="Stylet / dessin">✏️ Stylet</button>
+                <button id="shapesQuickBtn" class="tool-primary" title="Ajouter une forme">○ Formes</button>
                 <button id="editorImageBtn" title="Ajouter une image">🖼️ Image</button>
                 <button id="scanInCourseBtn" title="Scanner une feuille dans ce cours">📄 Scanner</button>
                 <button id="boardInCourseBtn" title="Photo du tableau dans ce cours">📷 Tableau</button>
@@ -491,12 +522,15 @@ body.course-focus .mode-help{display:none}.recenter-pulse{animation:recenterPuls
                 <button id="historyBtn" title="Historique des versions">🕘</button>
                 <button id="cleanNoteBtn" title="Mettre au propre">✨</button>
                 <button id="deleteNoteBtn" title="Déplacer à la corbeille">🗑️</button>
+                <button id="toolMoreBtn" class="toolbar-more-toggle" title="Plus d'outils">••• Plus</button>
               </div>
               <div class="editor-actions">
                 <button class="icon-soft" id="fitPageBtn" title="Ajuster à la page">▣</button>
                 <button class="icon-soft" id="editorFocusBtn" title="Plein écran">⛶</button>
               </div>
             </div>
+            <div id="objectContextBar"><b id="contextTitle">Objet sélectionné</b><button class="context-chip transparent-chip" id="contextTransparent">Fond transparent</button><label class="context-chip">Fond <input type="color" id="contextBgColor" value="#fff2a8"></label><button class="context-chip" id="contextWriteImage">T Écrire dessus</button></div>
+            <div id="tableContextBar" class="table-context-bar"><b>Tableau</b><button data-table-act="row-above">＋ Ligne au-dessus</button><button data-table-act="row-below">＋ Ligne en-dessous</button><button data-table-act="col-left">＋ Colonne à gauche</button><button data-table-act="col-right">＋ Colonne à droite</button><button data-table-act="del-row">Supprimer ligne</button><button data-table-act="del-col">Supprimer colonne</button></div>
             <div class="note-meta">
               <select id="noteSubject"></select>
               <select id="noteChapter"><option value="">Sans chapitre</option></select>
@@ -1017,7 +1051,7 @@ async function addSubject({ name, icon, color, chapter }) {
   const colors = ["#ffdbe8", "#dcecff", "#dcf5e7", "#eee3ff", "#fff0cf", "#dff5f5"];
   const subject = {
     id: uid("s"), name: name || "Nouvelle matière", icon: icon || "📘",
-    chapter: chapter || "Nouveau chapitre", color: colors[state.subjects.length % colors.length],
+    chapter: chapter || "Nouveau chapitre", color: color || colors[state.subjects.length % colors.length],
     yearId: state.schoolYears.find(y=>!y.archived)?.id || state.schoolYears[0]?.id || "",
     archived: false, order: state.subjects.length,
   };
@@ -1939,8 +1973,11 @@ function readCurrentNoteAloud() {
   speechSynthesis.speak(u); showToast("Lecture du cours en cours", "info");
 }
 function insertSimpleTable() {
-  document.execCommand("insertHTML", false, `<table class="nova-table"><tbody><tr><td>Élément</td><td>Information</td></tr><tr><td><br></td><td><br></td></tr><tr><td><br></td><td><br></td></tr></tbody></table><p><br></p>`);
-  persistText();
+  const body=$("modalBody"); if(!body)return;
+  body.innerHTML=`<h2>Insérer un tableau</h2><p class="modal-desc">Passe sur la grille puis choisis le nombre de lignes et colonnes, comme dans Word.</p><div class="table-pick-label" id="tablePickLabel">2 × 2</div><div class="table-grid-picker" id="tableGridPicker">${Array.from({length:64},(_,i)=>`<button data-r="${Math.floor(i/8)+1}" data-c="${i%8+1}" aria-label="${Math.floor(i/8)+1} lignes, ${i%8+1} colonnes"></button>`).join("")}</div></div>`;
+  $("modal").classList.remove("hidden");
+  const cells=[...body.querySelectorAll("#tableGridPicker button")],paint=(r,c)=>{cells.forEach(b=>b.classList.toggle("hot",Number(b.dataset.r)<=r&&Number(b.dataset.c)<=c));$("tablePickLabel").textContent=`${r} ligne${r>1?'s':''} × ${c} colonne${c>1?'s':''}`};paint(2,2);
+  cells.forEach(b=>{b.onpointerenter=()=>paint(Number(b.dataset.r),Number(b.dataset.c));b.onclick=()=>{const r=Number(b.dataset.r),c=Number(b.dataset.c);const rows=Array.from({length:r},()=>`<tr>${Array.from({length:c},()=>'<td><br></td>').join('')}</tr>`).join('');$("modal").classList.add("hidden");$("noteEditor").focus();document.execCommand("insertHTML",false,`<table class="nova-table"><tbody>${rows}</tbody></table><p><br></p>`);persistText();showToast(`Tableau ${r} × ${c} ajouté`)}});
 }
 function openMathSymbols() {
   const symbols = ["×","÷","±","≤","≥","√","π","∞","²","³","½","¼","¾","°","→","≈","≠"];
@@ -1988,20 +2025,21 @@ function renderObjects() {
     el.style.height = obj.height + "px";
     el.style.zIndex = obj.zIndex || 1;
     el.style.transform = `rotate(${obj.rotation||0}deg)`;
+    if(obj.type === "text"){ el.style.background = obj.background && obj.background !== "transparent" ? obj.background : "transparent"; }
     if (obj.type === "image") {
-      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div><button data-act="crop" title="Recadrer / améliorer">✂</button><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="image-body"><img src="${obj.src}" alt="Image du cours"></div><span class="resize-handle"></span>`;
+      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div><button data-act="write" class="write-on-image" title="Écrire sur l'image">T Écrire</button><button data-act="crop" title="Recadrer / améliorer">✂</button><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="image-body"><img src="${obj.src}" alt="Image du cours"></div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else if (obj.type === "sticker") {
-      el.classList.add("sticker-object");el.innerHTML=`<div class="object-drag-handle"><span>⋮⋮</span><div><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="sticker-body">${obj.html||"⭐ Important"}</div><span class="resize-handle"></span>`;
+      el.classList.add("sticker-object");el.innerHTML=`<div class="object-drag-handle"><span>⋮⋮</span><div><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="sticker-body">${obj.html||"⭐ Important"}</div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else if (obj.type === "ruler") {
-      el.classList.add("ruler-object");el.innerHTML=`<div class="object-drag-handle"><span>Règle</span><div><button data-act="rotate">↻</button><button data-act="duplicate">⧉</button><button data-act="delete">×</button></div></div><div class="ruler-body">${Array.from({length:21},(_,i)=>`<i style="left:${i*5}%"><small>${i}</small></i>`).join("")}</div><span class="resize-handle"></span>`;
+      el.classList.add("ruler-object");el.innerHTML=`<div class="object-drag-handle"><span>Règle</span><div><button data-act="rotate">↻</button><button data-act="duplicate">⧉</button><button data-act="delete">×</button></div></div><div class="ruler-body">${Array.from({length:21},(_,i)=>`<i style="left:${i*5}%"><small>${i}</small></i>`).join("")}</div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else if (obj.type === "protractor") {
-      el.classList.add("protractor-object");el.innerHTML=`<div class="object-drag-handle"><span>Rapporteur</span><div><button data-act="rotate">↻</button><button data-act="duplicate">⧉</button><button data-act="delete">×</button></div></div><div class="protractor-body"><span>0°</span><b>90°</b><em>180°</em></div><span class="resize-handle"></span>`;
+      el.classList.add("protractor-object");el.innerHTML=`<div class="object-drag-handle"><span>Rapporteur</span><div><button data-act="rotate">↻</button><button data-act="duplicate">⧉</button><button data-act="delete">×</button></div></div><div class="protractor-body"><span>0°</span><b>90°</b><em>180°</em></div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else if (obj.type === "shape") {
       el.classList.add("shape-object");
-      el.innerHTML = `<div class="object-drag-handle"></div>${shapeSvg(obj)}<div class="object-controls"><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div><span class="resize-handle"></span>`;
+      el.innerHTML = `<div class="object-drag-handle"></div>${shapeSvg(obj)}<div class="object-controls"><button data-act="rotate" title="Tourner">↻</button><button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
     } else {
       const cls = obj.type === "postit" ? "postit-body" : "textbox-body";
-      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div>${obj.audioTimestampMs!=null?'<button data-act="listen" title="Écouter au repère">🎧</button>':''}<button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="${cls}" contenteditable="true">${obj.html || (obj.type === "postit" ? "À retenir…" : "Écris ici…")}</div><span class="resize-handle"></span>`;
+      el.innerHTML = `<div class="object-drag-handle"><span>⋮⋮</span><div>${obj.audioTimestampMs!=null?'<button data-act="listen" title="Écouter au repère">🎧</button>':''}<button data-act="duplicate" title="Dupliquer">⧉</button><button data-act="delete" title="Supprimer">×</button></div></div><div class="${cls}" contenteditable="true">${obj.html || (obj.type === "postit" ? "À retenir…" : "Écris ici…")}</div><span class="resize-handle grip-se" data-dir="se"></span><span class="resize-handle grip-sw" data-dir="sw"></span><span class="resize-handle grip-ne" data-dir="ne"></span><span class="resize-handle grip-nw" data-dir="nw"></span>`;
       const body = el.querySelector("[contenteditable]");
       body.addEventListener("input", () => { obj.html = body.innerHTML; persistObjects(); });
     }
@@ -2010,6 +2048,7 @@ function renderObjects() {
     initObjectResize(el, obj);
     el.querySelector('[data-act="delete"]').onclick = (e) => { e.stopPropagation(); n.pageObjects = n.pageObjects.filter(x=>x.id!==obj.id); selectedObjectId=null; persistObjects(); renderObjects(); };
     const cropBtn=el.querySelector('[data-act="crop"]');if(cropBtn)cropBtn.onclick=async(e)=>{e.stopPropagation();const out=await scanImageInteractive(obj.src,{title:"Recadrer l'image"});if(out){obj.src=out;persistObjects();renderObjects();showToast("Image mise à jour")}};
+    const writeBtn=el.querySelector('[data-act="write"]');if(writeBtn)writeBtn.onclick=(e)=>{e.stopPropagation();addPageObject({type:"text",html:"Écris ici…",background:"transparent",x:obj.x+Math.min(40,obj.width*.1),y:obj.y+Math.min(70,obj.height*.2),width:Math.max(180,Math.min(340,obj.width*.55)),height:95,zIndex:(obj.zIndex||Date.now())+10});showToast("Zone de texte transparente ajoutée sur l'image")};
     const rotateBtn=el.querySelector('[data-act="rotate"]'); if(rotateBtn)rotateBtn.onclick=(e)=>{e.stopPropagation();obj.rotation=((obj.rotation||0)+15)%360;el.style.transform=`rotate(${obj.rotation}deg)`;persistObjects()};
     el.querySelector('[data-act="duplicate"]').onclick = (e) => { e.stopPropagation(); const { id, ...copy } = obj; addPageObject({ ...copy, x:obj.x+24, y:obj.y+24, zIndex:Date.now() }); };
     const listen=el.querySelector('[data-act="listen"]'); if(listen)listen.onclick=(e)=>{e.stopPropagation();const audio=$(`audioTrack_${n.audioTracks?.[0]?.id}`)||$("audioTracksList")?.querySelector("audio");if(audio){audio.currentTime=Math.max(0,(obj.audioTimestampMs||0)/1000-3);audio.play();showToast("Lecture depuis le repère audio","info")}else showToast("Aucun audio disponible","info")};
@@ -2033,19 +2072,22 @@ function initObjectDrag(el, obj) {
   });
 }
 function initObjectResize(el, obj) {
-  const h=el.querySelector(".resize-handle");
-  h.addEventListener("pointerdown",(e)=>{
+  el.querySelectorAll(".resize-handle").forEach(h=>h.addEventListener("pointerdown",(e)=>{
     e.preventDefault();e.stopPropagation();
-    const sx=e.clientX,sy=e.clientY,ow=obj.width,oh=obj.height;
+    const dir=h.dataset.dir||"se",sx=e.clientX,sy=e.clientY,ow=obj.width,oh=obj.height,ox=obj.x,oy=obj.y;
     h.setPointerCapture(e.pointerId);
     const move=(ev)=>{
-      obj.width=Math.max(120,Math.min(PAGE_W-obj.x,ow+(ev.clientX-sx)/zoom));
-      obj.height=Math.max(70,Math.min(PAGE_H-obj.y,oh+(ev.clientY-sy)/zoom));
-      el.style.width=obj.width+"px";el.style.height=obj.height+"px";
+      const dx=(ev.clientX-sx)/zoom,dy=(ev.clientY-sy)/zoom;
+      let nw=ow,nh=oh,nx=ox,ny=oy;
+      if(dir.includes("e")) nw=ow+dx;if(dir.includes("s")) nh=oh+dy;
+      if(dir.includes("w")){nw=ow-dx;nx=ox+dx}if(dir.includes("n")){nh=oh-dy;ny=oy+dy}
+      nw=Math.max(120,Math.min(PAGE_W-nx,nw));nh=Math.max(70,Math.min(PAGE_H-ny,nh));
+      obj.width=nw;obj.height=nh;obj.x=Math.max(0,nx);obj.y=Math.max(0,ny);
+      el.style.width=nw+"px";el.style.height=nh+"px";el.style.left=obj.x+"px";el.style.top=obj.y+"px";
     };
-    const up=()=>{h.removeEventListener("pointermove",move);h.removeEventListener("pointerup",up);persistObjects();};
+    const up=()=>{h.removeEventListener("pointermove",move);h.removeEventListener("pointerup",up);persistObjects()};
     h.addEventListener("pointermove",move);h.addEventListener("pointerup",up);
-  });
+  }));
 }
 
 async function handwritingToText(){const n=currentNote();const strokes=(n?.strokes||[]).filter(st=>!selectedStrokeIds.size||selectedStrokeIds.has(st.id));if(!strokes.length){showToast("Sélectionne une écriture avec le lasso, ou dessine d'abord.","info");return}if(!window.Tesseract){showToast("Le module de reconnaissance n'est pas chargé.","error");return}const pts=strokes.flatMap(s=>s.points),minX=Math.max(0,Math.min(...pts.map(p=>p.x))-20),maxX=Math.min(PAGE_W,Math.max(...pts.map(p=>p.x))+20),minY=Math.max(0,Math.min(...pts.map(p=>p.y))-20),maxY=Math.min(PAGE_H,Math.max(...pts.map(p=>p.y))+20),c=document.createElement("canvas");c.width=Math.max(80,Math.round(maxX-minX));c.height=Math.max(50,Math.round(maxY-minY));const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);strokes.forEach(st=>{x.strokeStyle="#111";x.lineWidth=Math.max(2,st.width);x.lineCap="round";x.lineJoin="round";x.beginPath();st.points.forEach((p,i)=>i?x.lineTo(p.x-minX,p.y-minY):x.moveTo(p.x-minX,p.y-minY));x.stroke()});showToast("Reconnaissance de l'écriture…","info");try{const r=await window.Tesseract.recognize(c.toDataURL("image/png"),"fra");const text=r.data.text.trim();if(!text){showToast("Aucun texte reconnu. L'écriture manuscrite peut être difficile à lire automatiquement.","info");return}addPageObject({type:"text",html:text.replace(/</g,"&lt;").replace(/\n/g,"<br>"),x:minX,y:minY,width:Math.max(260,maxX-minX),height:Math.max(90,maxY-minY)});showToast("Texte reconnu ajouté — vérifie la correction") }catch(e){console.error(e);showToast("Reconnaissance impossible.","error")}}
@@ -2710,6 +2752,34 @@ async function renderDashboard(){
 }
 
 __mods['src/features/dashboard.js'] = {renderDashboard};
+})();
+
+
+// ---- NOVA V9 validated UX patch ----
+(()=>{
+const {$,qsa}=__mods['src/utils/dom.js'];
+const {state,addSubject,saveNote,addHomework,updateHomework,toggleHomework,trashHomework}=__mods['src/state/store.js'];
+const {openModal,closeModal}=__mods['src/components/modal.js'];
+const {showToast}=__mods['src/components/toast.js'];
+const nb=__mods['src/features/notebooks.js'],ed=__mods['src/features/editor.js'],hw=__mods['src/features/homework.js'];
+const esc=(s='')=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let activeSubjectId=null,activeTableCell=null;
+function subjectOptions(selected=''){return state.subjects.filter(s=>!s.archived).map(s=>`<option value="${esc(s.name)}" ${s.name===selected?'selected':''}>${s.icon||'📘'} ${esc(s.name)}</option>`).join('')}
+function enterSubject(id){if(!id)return;activeSubjectId=id;document.body.classList.add('subject-open');const s=state.subjects.find(x=>x.id===id);const h=document.querySelector('#notebooks .notebook-heading h2');if(h&&s)h.textContent=`${s.icon||'📘'} ${s.name}`;}
+function leaveSubject(){activeSubjectId=null;document.body.classList.remove('subject-open');const h=document.querySelector('#notebooks .notebook-heading h2');if(h)h.textContent='Mes cahiers';}
+const oldRender=nb.renderSubjects;nb.renderSubjects=function(){oldRender();const b=$('backToSubjectsBtn');if(b)b.onclick=()=>leaveSubject();const add=$('addSubjectNotebookBtn');if(add)add.onclick=openAddSubject;};
+function openAddSubject(){openModal(`<h2>Ajouter une matière</h2><div class="form-grid"><input id="v9SubName" placeholder="Nom de la matière"><div class="voice-field"><input id="v9SubIcon" placeholder="Icône (ex. 🧪)" value="📘"><input type="color" id="v9SubColor" value="#e8e0ff" title="Couleur"></div><button class="primary-btn" id="v9SubSave">Ajouter</button></div>`);$('v9SubSave').onclick=async()=>{const name=$('v9SubName').value.trim();if(!name){showToast('Donne un nom à la matière','info');return}await addSubject({name,icon:$('v9SubIcon').value||'📘',color:$('v9SubColor').value,chapter:'Nouveau chapitre'});closeModal();nb.renderSubjects();showToast('Matière ajoutée')}}
+const oldOpen=ed.openNote;ed.openNote=async function(id){const r=await oldOpen(id);const n=state.notes.find(x=>x.id===id);if(n)enterSubject(n.subject);return r};
+const oldCreate=ed.createNote;ed.createNote=async function(subjectId){const id=subjectId||activeSubjectId||$('noteSubject')?.value;const r=await oldCreate(id);if(r?.subject)enterSubject(r.subject);return r};
+
+function dictateTo(id){const el=$(id),SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!el)return;if(!SR){showToast("Sur iPad, utilise aussi le micro du clavier si la dictée NOVA n'est pas disponible.",'info');el.focus();return}const rec=new SR();rec.lang='fr-FR';rec.interimResults=false;rec.onresult=e=>{const t=e.results[0][0].transcript;el.value=(el.value?(el.value+(el.tagName==='TEXTAREA'?'\n':' ')):'')+t;el.dispatchEvent(new Event('input',{bubbles:true}))};rec.onerror=()=>showToast('Dictée interrompue','error');rec.start();showToast('Parle maintenant…','info')}
+function editHomeworkV9(h=null){openModal(`<h2>${h?'Modifier':'Ajouter'} un devoir</h2><div class="form-grid"><label>Matière</label><select id="hwSubject">${subjectOptions(h?.subject||'')}</select><label>Travail à faire</label><div class="voice-field"><input id="hwText" placeholder="Ex. Exercices 12 à 18" value="${esc(h?.text||'')}"><button class="mic-btn" data-mic="hwText">🎙️</button></div><label>Pour quand ?</label><input id="hwDue" type="date" value="${/^\d{4}-\d{2}-\d{2}$/.test(h?.due||'')?h.due:''}"><select id="hwPriority"><option value="normale" ${h?.priority!=='haute'?'selected':''}>Priorité normale</option><option value="haute" ${h?.priority==='haute'?'selected':''}>Priorité haute</option></select><label>Petites étapes</label><div class="voice-field"><textarea id="hwSteps" rows="5" placeholder="Une étape par ligne">${(h?.steps||[]).map(s=>esc(s.text)).join('\n')}</textarea><button class="mic-btn" data-mic="hwSteps">🎙️</button></div><button class="primary-btn" id="hwSave">${h?'Enregistrer':'Ajouter'}</button></div>`);qsa('[data-mic]',$('modalBody')).forEach(b=>b.onclick=()=>dictateTo(b.dataset.mic));$('hwSave').onclick=async()=>{const lines=$('hwSteps').value.split(/\n+/).map(x=>x.trim()).filter(Boolean),old=h?.steps||[],steps=lines.map((text,i)=>({id:old[i]?.id||`step_${Date.now()}_${i}`,text,done:old[i]?.text===text?old[i].done:false}));const patch={subject:$('hwSubject').value,text:$('hwText').value,due:$('hwDue').value,priority:$('hwPriority').value,steps};if(h)await updateHomework(h.id,patch);else{const n=await addHomework(patch);await updateHomework(n.id,{steps})}hw.renderHomework();closeModal();showToast('Devoir enregistré')}}
+function renderHomeworkV9(){const list=$('homeworkList'),preview=$('homeworkPreview');if(list)list.innerHTML='';if(preview)preview.innerHTML='';const undone=state.homework.filter(h=>!h.done);if($('homeworkCount'))$('homeworkCount').textContent=undone.length;if(list){if(!state.homework.length)list.innerHTML='<div class="empty-state">🎉 Aucun devoir à faire.</div>';state.homework.slice().sort((a,b)=>a.done-b.done).forEach(h=>{const row=document.createElement('div');row.className='homework-row homework-rich'+(h.done?' done':'');row.innerHTML=`<input type="checkbox" ${h.done?'checked':''}><div><strong>${esc(h.subject)} — ${esc(h.text)}</strong><small>${h.due?`Pour le ${esc(h.due)}`:''}</small></div><div class="hw-actions"><button class="ghost-btn" data-edit>✎</button><button class="ghost-btn" data-delete>🗑️</button></div>`;row.querySelector('input').onchange=async e=>{await toggleHomework(h.id,e.target.checked);renderHomeworkV9()};row.querySelector('[data-edit]').onclick=()=>editHomeworkV9(h);row.querySelector('[data-delete]').onclick=async()=>{await trashHomework(h.id);renderHomeworkV9()};list.appendChild(row)})}if(preview)undone.slice(0,4).forEach(h=>{const r=document.createElement('div');r.className='list-row';r.innerHTML=`<input type="checkbox"><div><strong>${esc(h.subject)}</strong><small>${esc(h.text)}</small></div>`;preview.appendChild(r)})}
+hw.renderHomework=renderHomeworkV9;hw.initHomeworkForm=function(){$('addHomeworkBtn').onclick=()=>editHomeworkV9()};
+
+function installTableContext(){document.addEventListener('selectionchange',()=>{const sel=window.getSelection();const node=sel?.anchorNode;const el=node?.nodeType===1?node:node?.parentElement;activeTableCell=el?.closest?.('#noteEditor td,#noteEditor th')||null;$('tableContextBar')?.classList.toggle('show',!!activeTableCell)});qsa('[data-table-act]').forEach(b=>b.onclick=()=>{if(!activeTableCell)return;const tr=activeTableCell.parentElement,table=activeTableCell.closest('table'),ri=[...table.rows].indexOf(tr),ci=[...tr.cells].indexOf(activeTableCell),act=b.dataset.tableAct;if(act==='row-above'||act==='row-below'){const idx=act==='row-above'?ri:ri+1,row=table.insertRow(idx);for(let i=0;i<tr.cells.length;i++)row.insertCell().innerHTML='<br>'}else if(act==='col-left'||act==='col-right'){const idx=act==='col-left'?ci:ci+1;[...table.rows].forEach(r=>r.insertCell(Math.min(idx,r.cells.length)).innerHTML='<br>')}else if(act==='del-row'&&table.rows.length>1)table.deleteRow(ri);else if(act==='del-col'&&tr.cells.length>1)[...table.rows].forEach(r=>r.deleteCell(Math.min(ci,r.cells.length-1)));$('noteEditor').dispatchEvent(new Event('input',{bubbles:true}))})}
+function objectContext(){const layer=$('objectLayer');if(!layer)return;const sync=()=>{const sel=layer.querySelector('.page-object.selected'),bar=$('objectContextBar');if(!sel){bar?.classList.remove('show');return}bar.classList.add('show');const id=sel.dataset.objectId,n=state.notes.find(x=>x.id===state.activeNote),o=n?.pageObjects?.find(x=>x.id===id);if(!o)return;$('contextTitle').textContent=o.type==='image'?'Image':o.type==='text'?'Zone de texte':'Objet';$('contextWriteImage').style.display=o.type==='image'?'inline-flex':'none';$('contextTransparent').style.display=o.type==='text'?'inline-flex':'none';$('contextBgColor').parentElement.style.display=o.type==='text'?'inline-flex':'none';$('contextTransparent').onclick=async()=>{o.background='transparent';sel.style.background='transparent';await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.add('active')};$('contextBgColor').oninput=async e=>{o.background=e.target.value;sel.style.background=o.background;await saveNote(n.id,{pageObjects:n.pageObjects});$('contextTransparent').classList.remove('active')};$('contextWriteImage').onclick=async()=>{if(o.type!=='image')return;n.pageObjects.push({id:'obj_'+Date.now(),type:'text',html:'Écris ici…',background:'transparent',x:o.x+30,y:o.y+55,width:Math.max(180,Math.min(360,o.width*.6)),height:90,rotation:0,zIndex:Date.now()});await saveNote(n.id,{pageObjects:n.pageObjects});await ed.openNote(n.id);showToast("Écris directement sur l'image")}};layer.addEventListener('pointerup',()=>setTimeout(sync,0));new MutationObserver(()=>setTimeout(sync,0)).observe(layer,{childList:true,subtree:true})}
+const oldInit=ed.initEditor;ed.initEditor=function(){oldInit();const card=document.querySelector('.editor-card'),more=$('toolMoreBtn');const secondary=['#checkListBtn','#linkBtn','#postItBtn','#stickerBtn','#geometryBtn','#ocrCourseBtn','#pdfInCourseBtn','#removeDocBgBtn','#exportPdfBtn','#shareCourseBtn','#recordAudioBtn','#audioMarkerBtn','#readAloudBtn','#missingMarkerBtn','#mathToolsBtn','#historyBtn','#cleanNoteBtn','#deleteNoteBtn','[data-cmd="justifyLeft"]','[data-cmd="justifyCenter"]','[data-cmd="justifyRight"]','[data-cmd="insertOrderedList"]','[data-cmd="insertUnorderedList"]'];secondary.forEach(sel=>qsa(sel).forEach(x=>x.classList.add('tool-secondary')));['#editorImageBtn','#scanInCourseBtn','#insertTableBtn','#freeTextBtn','#drawQuickBtn','#shapesQuickBtn'].forEach(sel=>$(sel.slice(1))?.classList.add('tool-primary'));more.onclick=()=>{card.classList.toggle('toolbar-expanded');more.classList.toggle('active');more.textContent=card.classList.contains('toolbar-expanded')?'Réduire':'••• Plus'};$('drawQuickBtn').onclick=()=>document.querySelector('[data-mode="dessin"]')?.click();$('shapesQuickBtn').onclick=()=>$('geometryBtn')?.click();$('backToSubjectsBtn').onclick=leaveSubject;$('addSubjectNotebookBtn').onclick=openAddSubject;installTableContext();objectContext();};
 })();
 
 // ---- src/app.js ----
