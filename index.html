@@ -347,6 +347,113 @@ body.nova-focus-mode{background:#dfe1e8!important;overflow:hidden!important}
 @media(pointer:coarse){.object-image.selected .image-body{touch-action:none}.page-object.selected .resize-handle{width:34px!important;height:34px!important}}
 
 </style>
+
+<style id="nova-v11-studio-minimal">
+/* NOVA V11 — Studio Minimal : finition produit, sobriété et hiérarchie */
+:root{
+  --bg:#f6f7fb;--surface:#ffffff;--surface-2:#fafbfe;--text:#242633;--muted:#777b8c;
+  --line:#e8eaf2;--line-strong:#dfe2ec;--primary:#6958e8;--primary-2:#7b6af0;
+  --focus-ring:0 0 0 3px rgba(105,88,232,.14);--shadow:0 8px 28px rgba(35,39,68,.07);
+  --shadow-soft:0 2px 12px rgba(35,39,68,.05);--radius:18px;--radius-sm:11px;
+}
+html,body{background:var(--bg)!important}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",sans-serif!important;color:var(--text);letter-spacing:-.01em}
+*{scrollbar-width:thin;scrollbar-color:#c9ccd8 transparent}
+button,select,input,textarea{font-family:inherit}
+button{transition:background .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[contenteditable=true]:focus-visible{outline:none;box-shadow:var(--focus-ring)!important}
+
+/* Sidebar — plus calme, plus produit */
+.app-shell{grid-template-columns:194px minmax(0,1fr)!important}
+.sidebar{padding:20px 12px 16px!important;border-right:1px solid var(--line)!important;box-shadow:none!important;background:rgba(255,255,255,.96)!important}
+.brand{font-size:23px!important;letter-spacing:.3px!important;margin:0 10px 24px!important;color:#342b83!important}
+.brand small{font-size:9px!important;letter-spacing:2.2px!important;margin-top:2px}
+.sidebar nav{gap:4px!important}
+.nav-btn{min-height:42px;padding:10px 12px!important;border-radius:11px!important;font-size:13.5px!important;color:#5b5f70!important;font-weight:650!important}
+.nav-btn:hover{background:#f3f2fb!important;color:#40379a!important}
+.nav-btn.active{background:#eeebff!important;color:#4f3ed0!important;box-shadow:none!important}
+.profile-card{padding:10px 8px!important;border-top:1px solid var(--line);margin-top:auto!important}
+.avatar{width:34px!important;height:34px!important;background:#f0edff!important}
+
+/* Zone principale */
+.main{padding:18px 24px 44px!important;background:var(--bg)!important}
+.topbar{position:sticky;top:0;z-index:35;margin:-18px -24px 18px!important;padding:14px 24px!important;min-height:64px;background:rgba(246,247,251,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,234,242,.8)}
+.topbar h1{font-size:23px!important;letter-spacing:-.025em!important}
+.eyebrow{font-size:10px!important;letter-spacing:1.3px!important;color:#7064cb!important}
+.top-actions{gap:7px!important}.top-actions .ghost-btn,.top-actions .icon-btn{min-height:38px!important;border:1px solid var(--line)!important;background:#fff!important;box-shadow:none!important;border-radius:11px!important;font-size:12px!important}
+
+/* Cartes globales : moins de gradient, plus de structure */
+.panel,.welcome-card,.quick-card,.editor-card,.pages-panel,.capture-card,.assistant-card,.search-hero,.feature-panel{border:1px solid var(--line)!important;box-shadow:var(--shadow-soft)!important;background:#fff!important}
+.welcome-card{background:#fff!important;min-height:190px!important;padding:24px!important}
+.welcome-card h2{font-size:29px!important;line-height:1.15!important}.welcome-card p{font-size:14px!important;color:var(--muted)!important}
+.quick-card{padding:18px!important}.quick-actions{gap:8px!important}.quick-actions button{min-height:66px!important;background:#fafaff!important;border-radius:13px!important;border:1px solid var(--line)!important}
+.section-head{margin:22px 0 10px!important}.section-head h2{font-size:18px!important}
+.subjects-grid{gap:10px!important}.subject-card{min-height:102px!important;padding:14px!important;border-radius:14px!important;box-shadow:none!important}.subject-card h3{font-size:14px!important;margin:8px 0 3px!important}.subject-card p{font-size:12px!important}
+.dashboard-grid{gap:12px!important}.panel{padding:16px!important}
+
+/* Cahiers / navigation matière */
+.notebook-heading{margin-bottom:10px!important;align-items:center!important}.notebook-heading h2{font-size:21px!important}.heading-actions{gap:6px!important;flex-wrap:wrap}.heading-actions .ghost-btn,.heading-actions .primary-btn,.heading-actions select{min-height:38px!important;padding:8px 11px!important;border-radius:10px!important;font-size:12px!important}
+.notebook-strip{gap:8px!important;margin-bottom:10px!important}.notebook-strip .notebook{min-height:82px!important;padding:12px!important;border-radius:13px!important;box-shadow:none!important;border:1px solid rgba(0,0,0,.04)!important}.notebook-strip .notebook strong{margin-top:12px!important;font-size:13px!important}
+
+/* Editeur : aspect application pro, feuille réellement dominante */
+.editor-layout{gap:10px!important;grid-template-columns:178px minmax(0,1fr)!important}
+.pages-panel{border-radius:14px!important;padding:10px!important;background:#fbfbfd!important}.pages-panel-head{margin-bottom:8px!important}.pages-panel-head h3{font-size:13px!important}.pages-panel-head button{border:0!important;background:#f0edff!important;color:#5b49d9!important;border-radius:9px!important;min-width:31px!important;height:31px!important}
+.note-item{border:1px solid transparent!important;background:transparent!important;border-radius:10px!important;padding:10px!important}.note-item:hover{background:#f5f4fb!important}.note-item.active{background:#eeebff!important;border-color:#d9d2ff!important;box-shadow:none!important}
+.editor-card{border-radius:16px!important;overflow:hidden!important;box-shadow:0 8px 30px rgba(35,39,68,.06)!important}
+.editor-topline{position:sticky!important;top:64px!important;z-index:30!important;min-height:52px!important;background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(10px)}
+.editor-toolbar{padding:7px 9px!important;gap:3px!important;scrollbar-width:none}.editor-toolbar::-webkit-scrollbar{display:none}
+.editor-toolbar button,.icon-soft,.toolbar-select{min-height:36px!important;border:1px solid transparent!important;background:transparent!important;border-radius:9px!important;padding:7px 9px!important;color:#4f5363!important;font-size:12px!important}
+.editor-toolbar button:hover,.icon-soft:hover,.toolbar-select:hover{background:#f3f2f8!important;border-color:#ece9f7!important;color:#3e35a4!important}
+.editor-toolbar button.active,.editor-toolbar .toolbar-more-toggle.active{background:#ebe7ff!important;color:#4d3ed0!important;border-color:#d8d0ff!important}
+.toolbar-divider{height:22px!important;background:#ececf2!important;margin:0 3px!important}
+.tool-primary{font-weight:700!important}.toolbar-more-toggle{margin-left:2px!important}
+.editor-actions{padding-right:8px!important;gap:3px!important}
+
+/* Les contrôles lourds deviennent discrets par défaut */
+.focus-support-bar{display:none!important}
+body.adhd-mode .focus-support-bar,body.course-focus .focus-support-bar{display:flex!important}
+.mode-toggle{padding:6px 10px!important;gap:5px!important;min-height:43px!important;background:#fbfbfd!important}.mode-btn{padding:7px 11px!important;border-radius:9px!important;font-size:12px!important}.mode-help{font-size:11px!important;color:#9396a5!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note-meta{padding:7px 10px!important;gap:7px!important;background:#fbfbfd!important;grid-template-columns:130px 170px minmax(180px,1fr) 112px!important}.note-meta input,.note-meta select{min-height:36px!important;padding:7px 9px!important;border-radius:9px!important;font-size:12px!important;background:#fff!important}
+
+/* Canvas document */
+.editor-viewport{background:#eef0f5!important;padding:30px 20px 64px!important}
+.page-stage{max-width:980px!important;margin:0 auto!important}
+.page-surface{box-shadow:0 14px 42px rgba(33,37,55,.13)!important;border:1px solid #e1e3ea!important;border-radius:2px!important}
+.note-editor{font-size:17px!important;line-height:1.72!important;color:#242633!important;padding:66px 72px!important}
+.note-editor h1,.note-editor h2{letter-spacing:-.025em!important}.note-editor h2{font-size:27px!important}.note-editor p{margin:.55em 0!important}
+.school-block{border-radius:10px!important;box-shadow:none!important}
+
+/* Context bars : petites barres flottantes propres */
+#objectContextBar,.table-context-bar{margin:8px 10px 0!important;border:1px solid var(--line)!important;background:#fff!important;border-radius:11px!important;box-shadow:0 6px 20px rgba(35,39,68,.08)!important;padding:7px 9px!important;gap:5px!important}
+.context-chip,.table-context-bar button{min-height:32px!important;border-radius:8px!important;font-size:11px!important;background:#fafafd!important;border:1px solid var(--line)!important}
+
+/* Boutons généraux */
+.primary-btn{background:var(--primary)!important;background-image:none!important;border-radius:11px!important;box-shadow:none!important;font-weight:700!important}.primary-btn:hover{background:#5d4cdb!important;transform:translateY(-1px)}
+.ghost-btn{border:1px solid var(--line)!important;background:#fff!important;border-radius:10px!important;box-shadow:none!important}
+.ghost-btn:hover{background:#f6f5fb!important;border-color:#ddd9ef!important}
+
+/* Modales / formulaires */
+.modal{backdrop-filter:blur(5px)!important;background:rgba(31,34,48,.38)!important}.modal-card{border-radius:20px!important;border:1px solid rgba(255,255,255,.7)!important;box-shadow:0 26px 80px rgba(24,27,44,.22)!important;padding:24px!important}.modal-card h2{font-size:22px!important;letter-spacing:-.02em!important}.form-grid{gap:10px!important}.form-grid input,.form-grid select,.form-grid textarea{border:1px solid var(--line-strong)!important;border-radius:11px!important;padding:11px 12px!important;background:#fff!important}.modal-close{background:#f3f3f7!important}
+
+/* Mode Focus Word : uniquement outils + feuille */
+.nova-focus-mode .pages-panel{display:none!important}.nova-focus-mode .editor-layout{grid-template-columns:minmax(0,1fr)!important}.nova-focus-mode .note-meta,.nova-focus-mode .mode-toggle,.nova-focus-mode .focus-support-bar,.nova-focus-mode #objectContextBar:not(.show),.nova-focus-mode #tableContextBar:not(.show){display:none!important}.nova-focus-mode .editor-topline{top:0!important}.nova-focus-mode .editor-viewport{padding:34px 24px 80px!important;background:#eceef3!important}.nova-focus-mode .page-stage{max-width:1060px!important}.nova-focus-mode .page-surface{box-shadow:0 18px 48px rgba(30,34,52,.16)!important}.nova-focus-mode .editor-footer{background:rgba(255,255,255,.95)!important;border-top:1px solid var(--line)!important}
+
+/* iPad / tactile */
+@media(max-width:1180px){
+  .app-shell{grid-template-columns:168px minmax(0,1fr)!important}.sidebar{padding-left:9px!important;padding-right:9px!important}.brand{font-size:20px!important}.nav-btn{font-size:12.5px!important}
+  .main{padding:14px 14px 40px!important}.topbar{margin:-14px -14px 14px!important;padding:12px 14px!important}.editor-topline{top:58px!important}
+  .note-meta{grid-template-columns:115px 145px minmax(150px,1fr) 100px!important}.editor-layout{grid-template-columns:150px minmax(0,1fr)!important}.note-editor{padding:58px 54px!important;font-size:17px!important}
+}
+@media(max-width:900px){
+  .app-shell{grid-template-columns:72px minmax(0,1fr)!important}.sidebar .brand{font-size:0!important}.sidebar .brand:before{content:'N✦';font-size:21px;color:#4d3ed0}.sidebar .brand small,.nav-btn span,.profile-card>div:last-child{display:none!important}.nav-btn{justify-content:center!important;font-size:18px!important;padding:10px 8px!important}.avatar{margin:auto!important}
+  .main{padding-left:10px!important;padding-right:10px!important}.topbar{margin-left:-10px!important;margin-right:-10px!important}
+  .editor-layout{grid-template-columns:1fr!important}.pages-panel{display:none!important}.editor-viewport{padding:22px 8px 56px!important}.note-editor{padding:52px 44px!important}.note-meta{grid-template-columns:1fr 1fr!important}.note-meta #noteTitle{grid-column:1/-1}
+}
+@media(max-width:700px){.sidebar{display:none!important}.app-shell{display:block!important}.topbar{top:0!important}.editor-topline{top:58px!important}.note-editor{padding:42px 28px!important;font-size:16px!important}.editor-viewport{padding:16px 0 50px!important}}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+
 </head>
 <body>
   <div class="app-shell">
@@ -3173,5 +3280,25 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', {scope:'./'}).catch(console.warn));
 }
 </script>
+
+<script id="nova-v11-studio-minimal-js">
+(()=>{
+  const $=id=>document.getElementById(id);
+  const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
+  const secondarySelectors=['#ocrCourseBtn','#pdfInCourseBtn','#postItBtn','#stickerBtn','#geometryBtn','#exportPdfBtn','#shareCourseBtn','#recordAudioBtn','#audioMarkerBtn','#readAloudBtn','#missingMarkerBtn','#mathToolsBtn','#historyBtn','#cleanNoteBtn','#deleteNoteBtn','#linkBtn','#checkListBtn','[data-cmd="justifyLeft"]','[data-cmd="justifyCenter"]','[data-cmd="justifyRight"]','[data-cmd="insertOrderedList"]'];
+  const prime=()=>{
+    secondarySelectors.forEach(sel=>qsa(sel).forEach(el=>el.classList.add('tool-secondary')));
+    ['editorImageBtn','scanInCourseBtn','insertTableBtn','freeTextBtn','drawQuickBtn','shapesQuickBtn'].forEach(id=>$(id)?.classList.add('tool-primary'));
+    const more=$('toolMoreBtn'),card=document.querySelector('.editor-card');
+    if(more&&card&&!more.dataset.v11){more.dataset.v11='1';more.textContent='•••';more.title='Afficher les outils avancés';more.addEventListener('click',()=>{setTimeout(()=>{more.textContent=card.classList.contains('toolbar-expanded')?'Réduire':'•••';more.title=card.classList.contains('toolbar-expanded')?'Masquer les outils avancés':'Afficher les outils avancés'},0)})}
+    const full=$('focusModeBtn');if(full){full.textContent='⛶ Focus';full.title='Mode rédaction : outils + feuille uniquement'}
+    const ef=$('editorFocusBtn');if(ef)ef.title='Mode rédaction sans distraction';
+    const fp=$('fitPageBtn');if(fp)fp.title='Ajuster la feuille à l’écran';
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(prime,100));else setTimeout(prime,100);
+  new MutationObserver(()=>prime()).observe(document.documentElement,{subtree:true,childList:true});
+})();
+</script>
+
 </body>
 </html>
