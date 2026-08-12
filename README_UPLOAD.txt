@@ -1,16 +1,23 @@
-NOVA SCHOOL V11.1 — CORRECTIF GITHUB PAGES
+NOVA SCHOOL V12 — PAGES & REDACTION GUIDEE
 
-1. Décompresse ce ZIP.
+Mise à jour GitHub Pages :
+1. Décompresser le ZIP.
 2. Dans GitHub > nova-school > Add file > Upload files.
-3. Envoie le CONTENU du dossier (index.html, manifest.json, sw.js, icons/).
+3. Glisser le CONTENU de ce dossier (index.html, manifest.json, sw.js, icons/).
 4. Commit changes.
-5. Ne change rien dans Settings > Pages.
-6. Attends le déploiement GitHub Pages.
-7. Sur PC : Ctrl+F5. Sur iPad : ferme complètement NOVA/Safari puis rouvre l'adresse.
+5. Ne pas modifier Settings > Pages.
+6. Attendre le déploiement puis actualiser avec Ctrl+F5 sur PC.
+   Sur iPad : fermer totalement NOVA/Safari puis rouvrir l'app.
 
-Correctifs :
-- suppression d'une boucle MutationObserver qui pouvait figer NOVA ;
-- nouveau cache Service Worker v11.1 ;
-- start_url PWA mis à jour ;
-- navigation GitHub Pages sécurisée ;
-- aucune modification du schéma IndexedDB : les données scolaires locales sont préservées.
+V12 :
+- navigation précédente/suivante entre les pages d'un même cours ;
+- compteur de pages + swipe gauche/droite sur tactile ;
+- export PDF de toutes les pages du cours dans l'ordre ;
+- volet Pages avec miniatures, aperçu et glisser-déposer ;
+- sélection des objets plus claire, désélection en cliquant ailleurs ;
+- rotation directe avec poignée, duplication/suppression simplifiées ;
+- rédaction guidée avec Titre, Sous-titre, Définition, Exemple,
+  À retenir, Remarque, Attention et Conclusion ;
+- blocs visuels cohérents et lisibles ;
+- mode Focus centré sur la barre d'outils + la feuille ;
+- stockage IndexedDB inchangé par rapport à V11.1.
