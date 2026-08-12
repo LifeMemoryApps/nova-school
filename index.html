@@ -10,6 +10,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="NOVA School">
+  <meta name="nova-build" content="11.1-github-fix">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
@@ -3277,7 +3278,7 @@ __mods['src/app.js'] = {};
 
 <script>
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', {scope:'./'}).catch(console.warn));
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=11.1', {scope:'./'}).catch(console.warn));
 }
 </script>
 
@@ -3286,17 +3287,32 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   const $=id=>document.getElementById(id);
   const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
   const secondarySelectors=['#ocrCourseBtn','#pdfInCourseBtn','#postItBtn','#stickerBtn','#geometryBtn','#exportPdfBtn','#shareCourseBtn','#recordAudioBtn','#audioMarkerBtn','#readAloudBtn','#missingMarkerBtn','#mathToolsBtn','#historyBtn','#cleanNoteBtn','#deleteNoteBtn','#linkBtn','#checkListBtn','[data-cmd="justifyLeft"]','[data-cmd="justifyCenter"]','[data-cmd="justifyRight"]','[data-cmd="insertOrderedList"]'];
+  let primed=false;
   const prime=()=>{
-    secondarySelectors.forEach(sel=>qsa(sel).forEach(el=>el.classList.add('tool-secondary')));
-    ['editorImageBtn','scanInCourseBtn','insertTableBtn','freeTextBtn','drawQuickBtn','shapesQuickBtn'].forEach(id=>$(id)?.classList.add('tool-primary'));
+    secondarySelectors.forEach(sel=>qsa(sel).forEach(el=>{if(!el.classList.contains('tool-secondary'))el.classList.add('tool-secondary')}));
+    ['editorImageBtn','scanInCourseBtn','insertTableBtn','freeTextBtn','drawQuickBtn','shapesQuickBtn'].forEach(id=>{const el=$(id);if(el&&!el.classList.contains('tool-primary'))el.classList.add('tool-primary')});
     const more=$('toolMoreBtn'),card=document.querySelector('.editor-card');
-    if(more&&card&&!more.dataset.v11){more.dataset.v11='1';more.textContent='•••';more.title='Afficher les outils avancés';more.addEventListener('click',()=>{setTimeout(()=>{more.textContent=card.classList.contains('toolbar-expanded')?'Réduire':'•••';more.title=card.classList.contains('toolbar-expanded')?'Masquer les outils avancés':'Afficher les outils avancés'},0)})}
-    const full=$('focusModeBtn');if(full){full.textContent='⛶ Focus';full.title='Mode rédaction : outils + feuille uniquement'}
+    if(more&&card&&!more.dataset.v11){
+      more.dataset.v11='1';
+      if(more.textContent!=='•••') more.textContent='•••';
+      more.title='Afficher les outils avancés';
+      more.addEventListener('click',()=>setTimeout(()=>{
+        const expanded=card.classList.contains('toolbar-expanded');
+        const label=expanded?'Réduire':'•••';
+        if(more.textContent!==label) more.textContent=label;
+        more.title=expanded?'Masquer les outils avancés':'Afficher les outils avancés';
+      },0));
+    }
+    const full=$('focusModeBtn');if(full){if(full.textContent!=='⛶ Focus')full.textContent='⛶ Focus';full.title='Mode rédaction : outils + feuille uniquement'}
     const ef=$('editorFocusBtn');if(ef)ef.title='Mode rédaction sans distraction';
     const fp=$('fitPageBtn');if(fp)fp.title='Ajuster la feuille à l’écran';
+    primed=true;
   };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(prime,100));else setTimeout(prime,100);
-  new MutationObserver(()=>prime()).observe(document.documentElement,{subtree:true,childList:true});
+  const start=()=>setTimeout(prime,80);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+  // IMPORTANT V11.1 : pas de MutationObserver global. Il créait une boucle de mutations
+  // sur GitHub Pages/Safari et pouvait figer l'application au démarrage.
+  window.addEventListener('pageshow',()=>{if(!primed)start()});
 })();
 </script>
 

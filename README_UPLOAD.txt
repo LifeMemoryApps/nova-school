@@ -1,12 +1,16 @@
-NOVA SCHOOL V11 — STUDIO MINIMAL
+NOVA SCHOOL V11.1 — CORRECTIF GITHUB PAGES
 
-Objectif : interface plus minimaliste et professionnelle sans supprimer les fonctions.
-
-Mise à jour GitHub Pages :
-1. Décompresser ce ZIP.
-2. GitHub > nova-school > Add file > Upload files.
-3. Glisser index.html, manifest.json, sw.js et le dossier icons.
+1. Décompresse ce ZIP.
+2. Dans GitHub > nova-school > Add file > Upload files.
+3. Envoie le CONTENU du dossier (index.html, manifest.json, sw.js, icons/).
 4. Commit changes.
-5. Attendre le déploiement puis recharger avec Ctrl+F5.
+5. Ne change rien dans Settings > Pages.
+6. Attends le déploiement GitHub Pages.
+7. Sur PC : Ctrl+F5. Sur iPad : ferme complètement NOVA/Safari puis rouvre l'adresse.
 
-Les données scolaires existantes ne sont pas supprimées : cette version conserve le même stockage NOVA.
+Correctifs :
+- suppression d'une boucle MutationObserver qui pouvait figer NOVA ;
+- nouveau cache Service Worker v11.1 ;
+- start_url PWA mis à jour ;
+- navigation GitHub Pages sécurisée ;
+- aucune modification du schéma IndexedDB : les données scolaires locales sont préservées.
