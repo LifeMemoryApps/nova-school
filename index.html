@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#7c5cff" />
-  <title>NOVA School</title>
+  <title>NOVA School · Focus</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -475,6 +475,62 @@ body.adhd-mode .focus-support-bar,body.course-focus .focus-support-bar{display:f
 .nova-focus-mode .editor-card{display:flex!important;flex-direction:column!important;background:#eceef3!important}.nova-focus-mode .editor-topline{flex:0 0 auto!important;background:#fff!important;border-bottom:1px solid #e1e3ea!important}.nova-focus-mode .editor-footer{flex:0 0 auto!important}.nova-focus-mode .editor-viewport{flex:1!important;padding:30px 20px 70px!important}.nova-focus-mode .editor-toolbar{justify-content:center!important}.nova-focus-mode .editor-card:not(.toolbar-expanded) .tool-secondary{display:none!important}
 @media(max-width:900px){.editor-footer{grid-template-columns:1fr auto auto!important}.editor-footer #saveNoteBtn{display:none}.pages-panel{width:164px!important}.note-item.page-card{grid-template-columns:26px 45px 1fr 14px!important;padding:7px!important}.page-card-copy small{display:none}.page-thumb-preview{height:50px}.note-editor{font-size:19px!important}.page-bottom-nav{position:sticky;bottom:4px}.nova-focus-mode .editor-viewport{padding:18px 8px 60px!important}}
 </style>
+
+<style id="nova-v13-focus-design">
+/* =========================================================
+   NOVA SCHOOL V13 — FOCUS ARCHITECTURE
+   UI refondue pour réduire la charge cognitive sans supprimer
+   les fonctions du moteur V12.
+   ========================================================= */
+:root{
+  --v13-ink:#17203a;--v13-muted:#7b849b;--v13-line:#e8ebf3;
+  --v13-purple:#6d4aff;--v13-purple-soft:#f0ecff;--v13-bg:#f7f8fc;
+  --v13-card:#fff;--v13-shadow:0 10px 30px rgba(45,52,90,.07);
+  --v13-green:#36b37e;--v13-blue:#4d8cff;--v13-pink:#ff6f9f;--v13-amber:#ffb33f;
+}
+*{box-sizing:border-box}
+body{background:var(--v13-bg)!important;color:var(--v13-ink)!important}
+.app-shell{grid-template-columns:164px minmax(0,1fr)!important;background:var(--v13-bg)!important}
+.sidebar{background:#fff!important;border-right:1px solid var(--v13-line)!important;padding:18px 12px!important}
+.brand{font-size:22px!important;letter-spacing:-.5px!important;margin:2px 8px 24px!important}.brand small{font-size:9px!important;letter-spacing:2px!important}
+.sidebar nav{gap:4px!important}.nav-btn{min-height:42px!important;padding:10px 11px!important;border-radius:11px!important;font-size:13px!important;color:#566078!important;transition:.16s ease!important}.nav-btn:hover{background:#f7f5ff!important;color:var(--v13-purple)!important}.nav-btn.active{background:var(--v13-purple)!important;color:#fff!important;box-shadow:0 7px 16px rgba(109,74,255,.19)!important}
+.sidebar-bottom{gap:9px!important}.storage-card{display:none!important}.profile-card{border:0!important;background:#faf9ff!important;border-radius:13px!important;padding:9px!important}
+.main{padding:18px 24px 34px!important;min-width:0!important}.topbar{min-height:58px!important;margin-bottom:18px!important}.topbar .eyebrow{display:none!important}.topbar h1{font-size:24px!important;letter-spacing:-.6px!important}.top-actions{gap:7px!important}.top-actions .ghost-btn{font-size:12px!important;padding:9px 11px!important;border-radius:10px!important}.top-actions>label,.top-actions>#backupBtn{display:none!important}
+
+/* ACCUEIL CALME : 3 informations max */
+.premium-home{max-width:1120px;margin:0 auto}.home-top-grid{display:block!important}.hello-card{min-height:100px!important;border:1px solid var(--v13-line)!important;background:#fff!important;border-radius:18px!important;padding:22px 24px!important;box-shadow:none!important;margin-bottom:16px!important}.hello-card h1{font-size:27px!important;margin:0 0 6px!important}.hello-card p{color:var(--v13-muted)!important}.notification-bubble{background:#faf9ff!important;border:1px solid var(--v13-line)!important}
+#homeSubjects{display:grid!important;grid-template-columns:repeat(5,minmax(125px,1fr))!important;gap:12px!important;margin:0 0 18px!important}.home-subject-card,.subject-card{min-height:112px!important;border:1px solid rgba(65,70,105,.05)!important;border-radius:16px!important;box-shadow:none!important;transition:transform .14s ease,box-shadow .14s ease!important}.home-subject-card:hover,.subject-card:hover{transform:translateY(-2px)!important;box-shadow:var(--v13-shadow)!important}
+.home-main-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:16px!important}.home-card{border:1px solid var(--v13-line)!important;border-radius:18px!important;box-shadow:none!important;background:#fff!important;padding:20px!important}.home-card h2{font-size:16px!important}.day-card,.notification-card,.nova-helper-card,.home-quickbar,.feature-showcase{display:none!important}.todo-card{grid-column:auto!important}.v13-recent-card{display:block!important}.v13-recent-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}.v13-recent-item{display:flex;align-items:center;gap:11px;padding:10px 8px;border:0;background:transparent;border-radius:11px;text-align:left;width:100%;color:var(--v13-ink)}.v13-recent-item:hover{background:#faf9ff}.v13-recent-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--v13-purple-soft);font-size:16px}.v13-recent-item b{display:block;font-size:13px}.v13-recent-item small{display:block;color:var(--v13-muted);margin-top:2px}
+
+/* CAHIERS : bibliothèque claire */
+.notebook-heading{align-items:center!important;margin-bottom:14px!important}.notebook-heading .eyebrow{display:none!important}.notebook-heading h2{font-size:24px!important}.heading-actions{gap:7px!important}.heading-actions .ghost-btn,.heading-actions .primary-btn,.heading-actions select{min-height:38px!important;border-radius:10px!important;font-size:12px!important}.notebook-strip{gap:12px!important;margin-bottom:16px!important;grid-auto-rows:102px!important}.notebook{border-radius:16px!important;box-shadow:none!important;border:1px solid rgba(70,75,110,.06)!important}
+
+/* ÉDITEUR : une feuille, une barre, une intention */
+.editor-layout{grid-template-columns:116px minmax(0,1fr)!important;gap:14px!important;align-items:start!important}.pages-panel{border:1px solid var(--v13-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:none!important;padding:10px 8px!important;position:sticky!important;top:12px!important;max-height:calc(100vh - 110px)!important}.pages-panel-head{padding:4px 3px 9px!important}.pages-panel-head h3{font-size:13px!important}.pages-panel-head button{width:30px!important;height:30px!important;border-radius:9px!important}.notes-list{gap:9px!important}.note-item{border-radius:12px!important;padding:7px!important;min-height:116px!important;background:#fafbff!important;border:1px solid var(--v13-line)!important;box-shadow:none!important}.note-item.active{border:2px solid var(--v13-purple)!important;background:#f8f6ff!important}.note-item strong{font-size:11px!important}.note-item small{font-size:10px!important}.note-thumb{height:76px!important;border-radius:7px!important;background:#fff!important;box-shadow:0 2px 8px rgba(33,42,80,.05)!important}
+.editor-card{border:1px solid var(--v13-line)!important;border-radius:18px!important;box-shadow:none!important;background:#fff!important;overflow:hidden!important}.editor-topline{min-height:56px!important;padding:7px 10px!important;border-bottom:1px solid var(--v13-line)!important;background:#fff!important;position:sticky!important;top:0!important;z-index:50!important}.editor-toolbar{gap:3px!important;flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none!important}.editor-toolbar::-webkit-scrollbar{display:none}.editor-toolbar button,.editor-toolbar select,.editor-actions button{min-height:36px!important;height:36px!important;border-radius:9px!important;border:1px solid transparent!important;background:#fff!important;color:#414a62!important;padding:0 9px!important;font-size:12px!important;white-space:nowrap!important}.editor-toolbar button:hover,.editor-toolbar select:hover{background:#f7f5ff!important;color:var(--v13-purple)!important}.editor-toolbar .tool-primary{background:#f8f7fc!important}.toolbar-divider{height:22px!important;background:var(--v13-line)!important}
+/* secondaires invisibles au repos : le moteur reste intact */
+#ocrCourseBtn,#pdfInCourseBtn,#postItBtn,#stickerBtn,#geometryBtn,#exportPdfBtn,#shareCourseBtn,#editorDictateBtn,#recordAudioBtn,#audioMarkerBtn,#readAloudBtn,#missingMarkerBtn,#mathToolsBtn,#historyBtn,#cleanNoteBtn,#deleteNoteBtn,#checkListBtn,#boardInCourseBtn{display:none!important}.v13-more-open #ocrCourseBtn,.v13-more-open #pdfInCourseBtn,.v13-more-open #postItBtn,.v13-more-open #stickerBtn,.v13-more-open #geometryBtn,.v13-more-open #exportPdfBtn,.v13-more-open #shareCourseBtn,.v13-more-open #editorDictateBtn,.v13-more-open #recordAudioBtn,.v13-more-open #readAloudBtn,.v13-more-open #missingMarkerBtn,.v13-more-open #mathToolsBtn,.v13-more-open #historyBtn,.v13-more-open #deleteNoteBtn{display:inline-flex!important}.toolbar-more-toggle{color:var(--v13-purple)!important;font-weight:800!important}
+.note-meta{grid-template-columns:170px 170px minmax(180px,1fr) 120px!important;gap:7px!important;padding:8px 12px!important;background:#fbfbfd!important;border-bottom:1px solid var(--v13-line)!important}.note-meta select,.note-meta input{height:36px!important;border-radius:9px!important;border:1px solid var(--v13-line)!important;background:#fff!important;font-size:12px!important;padding:0 10px!important}.focus-support-bar{display:none!important}.mode-toggle{padding:7px 12px!important;border-bottom:1px solid var(--v13-line)!important;min-height:48px!important}.mode-btn{min-height:34px!important;border-radius:9px!important;padding:0 14px!important;font-size:12px!important}.mode-help{font-size:11px!important;color:#a0a7b8!important}.draw-toolbar{padding:8px 12px!important;border-bottom:1px solid var(--v13-line)!important;background:#fbfbfd!important}
+.editor-viewport{background:#f4f5f9!important;padding:30px 24px 52px!important;min-height:720px!important}.page-stage{display:flex!important;justify-content:center!important}.page-surface{width:min(900px,94%)!important;min-height:1160px!important;border-radius:3px!important;background:#fff!important;box-shadow:0 8px 28px rgba(31,41,79,.10)!important;border:1px solid #ebedf3!important}.note-editor{font-size:18px!important;line-height:1.75!important;padding:54px 64px 90px!important;color:#20263b!important}.note-editor h1,.note-editor h2{letter-spacing:-.7px!important}.note-editor h2{font-size:34px!important;color:#5f43ef!important;margin-top:0!important}.note-editor p{margin:0 0 14px!important}
+.editor-footer{height:48px!important;min-height:48px!important;padding:6px 12px!important;border-top:1px solid var(--v13-line)!important;background:#fff!important;position:sticky!important;bottom:0!important;z-index:45!important}.page-bottom-nav{position:absolute!important;left:50%!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;gap:8px!important;background:#fff!important;border:1px solid var(--v13-line)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:0 5px 18px rgba(36,44,82,.08)!important}.page-bottom-nav button{width:34px!important;height:32px!important;border:0!important;border-radius:50%!important;background:#faf9ff!important;color:var(--v13-purple)!important}.page-bottom-nav strong{font-size:12px!important;min-width:48px!important;text-align:center!important}.zoom-controls{margin-left:auto!important}.editor-footer #saveNoteBtn{display:none!important}
+
+/* BLOCS PÉDAGOGIQUES — drawer escamotable */
+.v13-guide-toggle{background:var(--v13-purple-soft)!important;color:var(--v13-purple)!important;font-weight:800!important}.v13-guide-panel{position:fixed;right:20px;top:92px;width:260px;max-height:calc(100vh - 120px);background:#fff;border:1px solid var(--v13-line);border-radius:18px;box-shadow:0 18px 50px rgba(31,39,80,.13);z-index:200;padding:14px;display:none;overflow:auto}.v13-guide-panel.open{display:block}.v13-guide-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.v13-guide-head h3{font-size:14px;margin:0}.v13-guide-head button{border:0;background:#f5f3ff;color:var(--v13-purple);width:30px;height:30px;border-radius:9px}.v13-guide-sub{font-size:11px;color:var(--v13-muted);line-height:1.4;margin:0 0 12px}.v13-block-btn{width:100%;display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;text-align:left;border:1px solid var(--v13-line);border-radius:11px;padding:9px 10px;margin:6px 0;background:#fff;color:var(--v13-ink)}.v13-block-btn:hover{border-color:#d6ceff;background:#faf9ff}.v13-block-btn i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-style:normal}.v13-block-btn b{display:block;font-size:12px}.v13-block-btn small{display:block;color:var(--v13-muted);font-size:10px;margin-top:1px}
+
+/* objets : discret au repos, évident à la sélection */
+#objectContextBar,#tableContextBar{border-bottom:1px solid var(--v13-line)!important;background:#fff!important;padding:7px 12px!important;gap:6px!important}.page-object.selected{outline:2px solid var(--v13-purple)!important;outline-offset:3px!important}.page-object.selected .resize-handle{width:15px!important;height:15px!important;border:2px solid #fff!important;background:var(--v13-purple)!important;box-shadow:0 1px 5px rgba(30,34,60,.22)!important}.v12-rotate-handle{background:#fff!important;color:var(--v13-purple)!important;border:2px solid var(--v13-purple)!important}
+
+/* Blocs de cours : lisibles, pas décoratifs */
+.note-editor .edu-block,.note-editor .structured-block,.note-editor .info-box{border-radius:13px!important;padding:14px 16px!important;margin:14px 0!important;border:1px solid transparent!important;box-shadow:none!important}.note-editor .definition-block,.note-editor [data-block="definition"]{background:#fff5f8!important;border-color:#ffd9e5!important}.note-editor .example-block,.note-editor [data-block="example"]{background:#f4fbf7!important;border-color:#d9f1e2!important}.note-editor .important-block,.note-editor [data-block="important"]{background:#f3f7ff!important;border-color:#dbe7ff!important}.note-editor .warning-block,.note-editor [data-block="warning"]{background:#fff9ee!important;border-color:#ffe8bb!important}
+
+/* FOCUS : feuille + petite toolbar + pages fines */
+body.nova-focus-mode{background:#eef0f5!important}.nova-focus-mode .sidebar,.nova-focus-mode .topbar,.nova-focus-mode #notebooks>.notebook-heading,.nova-focus-mode #notebooks>.notebook-strip,.nova-focus-mode .note-meta,.nova-focus-mode .mode-toggle,.nova-focus-mode .editor-footer #saveStatus,.nova-focus-mode .zoom-controls{display:none!important}.nova-focus-mode .main{padding:0!important;height:100vh!important;max-width:none!important}.nova-focus-mode #notebooks.view{height:100vh!important}.nova-focus-mode .editor-layout{grid-template-columns:84px minmax(0,1fr)!important;height:100vh!important;gap:0!important}.nova-focus-mode .pages-panel{display:block!important;border-radius:0!important;border-width:0 1px 0 0!important;top:0!important;height:100vh!important;max-height:none!important;padding:8px 5px!important}.nova-focus-mode .pages-panel-head h3{display:none!important}.nova-focus-mode .pages-panel-head #duplicatePageBtn,.nova-focus-mode .pages-panel-head #collapsePagesBtn{display:none!important}.nova-focus-mode .note-item{min-height:86px!important;padding:4px!important}.nova-focus-mode .note-item strong,.nova-focus-mode .note-item small{display:none!important}.nova-focus-mode .note-thumb{height:68px!important}.nova-focus-mode .editor-card{height:100vh!important;border:0!important;border-radius:0!important}.nova-focus-mode .editor-topline{height:52px!important;min-height:52px!important;padding:6px 10px!important}.nova-focus-mode .editor-toolbar{justify-content:center!important}.nova-focus-mode .editor-viewport{padding:18px 18px 70px!important;height:calc(100vh - 100px)!important;min-height:0!important}.nova-focus-mode .page-surface{width:min(920px,96%)!important;min-height:calc(100vh - 92px)!important}.nova-focus-mode .note-editor{padding:48px 62px 80px!important}.nova-focus-mode .editor-footer{display:flex!important;height:48px!important}.nova-focus-mode .page-bottom-nav{display:flex!important}.nova-focus-mode #editorFocusBtn{background:var(--v13-purple)!important;color:#fff!important}.nova-focus-mode #toolMoreBtn{display:none!important}
+
+/* iPad */
+@media(max-width:1100px){.app-shell{grid-template-columns:78px minmax(0,1fr)!important}.sidebar{padding:14px 7px!important}.brand{font-size:14px!important;text-align:center!important;margin:4px 0 20px!important}.brand small{display:none!important}.nav-btn{justify-content:center!important;font-size:0!important;padding:9px!important}.nav-btn span{display:none!important}.nav-btn::first-letter{font-size:17px!important}.profile-card>div:not(.avatar),.profile-gear{display:none!important}.profile-card{justify-content:center!important}.main{padding:14px 14px 26px!important}#homeSubjects{grid-template-columns:repeat(4,1fr)!important}.editor-layout{grid-template-columns:92px minmax(0,1fr)!important}.note-meta{grid-template-columns:130px 130px minmax(140px,1fr)!important}.note-meta #pageStyle{display:none!important}.editor-viewport{padding:20px 10px 50px!important}.page-surface{width:96%!important}.note-editor{padding:42px 44px 80px!important}.editor-toolbar button,.editor-toolbar select{padding:0 8px!important}.v13-guide-panel{right:12px;top:70px;width:245px}}
+@media(max-width:760px){.app-shell{display:block!important}.sidebar{position:fixed!important;bottom:0!important;left:0!important;right:0!important;top:auto!important;height:58px!important;z-index:500!important;border-right:0!important;border-top:1px solid var(--v13-line)!important;padding:5px 8px!important}.brand,.sidebar-bottom{display:none!important}.sidebar nav{display:flex!important;justify-content:space-around!important}.nav-btn{width:auto!important;min-width:46px!important}.main{padding:10px 10px 70px!important}.topbar{display:none!important}#homeSubjects{grid-template-columns:repeat(2,1fr)!important}.home-main-grid{grid-template-columns:1fr!important}.editor-layout{grid-template-columns:1fr!important}.pages-panel{display:none!important}.editor-card{border-radius:12px!important}.note-meta{grid-template-columns:1fr 1fr!important}.note-meta #noteTitle{grid-column:1/-1!important}.editor-viewport{padding:10px 4px 48px!important}.page-surface{width:100%!important;min-height:900px!important}.note-editor{padding:32px 24px 70px!important;font-size:17px!important}.nova-focus-mode .editor-layout{grid-template-columns:1fr!important}.nova-focus-mode .pages-panel{display:none!important}.nova-focus-mode .editor-viewport{height:calc(100vh - 100px)!important}}
+</style>
+
 </head>
 <body>
   <div class="app-shell">
@@ -3423,5 +3479,83 @@ const start=()=>{refresh();const layer=$('objectLayer');if(layer)new MutationObs
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,250),{once:true});else setTimeout(start,250);
 })();
 </script>
+
+<script id="nova-v13-focus-script">
+(function(){
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const q=(s,r=document)=>r.querySelector(s);
+  const qa=(s,r=document)=>Array.from(r.querySelectorAll(s));
+
+  function state(){ try{return window.__mods?.['src/state/store.js']?.state||null}catch{return null} }
+  function showView(name){ try{return window.__mods?.['src/router.js']?.showView?.(name)}catch{} }
+
+  function addRecentCard(){
+    const grid=q('.home-main-grid'); if(!grid||q('.v13-recent-card',grid))return;
+    const card=document.createElement('article'); card.className='home-card v13-recent-card';
+    card.innerHTML='<div class="card-title-row"><h2>Récents</h2><button class="link-arrow" type="button">Voir mes cahiers →</button></div><div class="v13-recent-list"></div>';
+    card.querySelector('.link-arrow').onclick=()=>showView('notebooks'); grid.appendChild(card); renderRecent();
+  }
+  function renderRecent(){
+    const box=q('.v13-recent-list'); const st=state(); if(!box||!st)return;
+    const items=[...(st.notes||[])].sort((a,b)=>(b.updatedAt||b.createdAt||0)-(a.updatedAt||a.createdAt||0)).slice(0,4);
+    box.innerHTML='';
+    if(!items.length){box.innerHTML='<div style="padding:18px;color:#8b93a8;font-size:13px">Tes derniers cours apparaîtront ici.</div>';return}
+    items.forEach(n=>{const sub=(st.subjects||[]).find(s=>s.id===n.subject);const b=document.createElement('button');b.className='v13-recent-item';b.innerHTML=`<span class="v13-recent-icon">${sub?.icon||'📘'}</span><span><b>${n.title||'Sans titre'}</b><small>${sub?.name||'Cours'} · récemment</small></span>`;b.onclick=async()=>{showView('notebooks');try{await window.__mods?.['src/features/editor.js']?.openNote?.(n.id)}catch{}};box.appendChild(b)});
+  }
+
+  function setupMore(){
+    const more=$('toolMoreBtn'); if(!more)return;
+    more.textContent='•••'; more.title='Plus d’outils';
+    more.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.body.classList.toggle('v13-more-open');});
+  }
+  function setupGuide(){
+    const toolbar=q('.editor-toolbar'); if(!toolbar||$('v13GuideBtn'))return;
+    const btn=document.createElement('button');btn.id='v13GuideBtn';btn.className='v13-guide-toggle';btn.textContent='✦ Blocs';btn.title='Aide à l’organisation du cours';
+    const more=$('toolMoreBtn');toolbar.insertBefore(btn,more||null);
+    const panel=document.createElement('aside');panel.className='v13-guide-panel';panel.id='v13GuidePanel';
+    const blocks=[
+      ['title','T','Titre','Le grand titre du cours','#f1edff'],['subtitle','H','Sous-titre','Une nouvelle partie','#f4f1ff'],
+      ['definition','▣','Définition','Expliquer clairement','#fff0f5'],['example','💡','Exemple','Illustrer une idée','#eefaf3'],
+      ['important','★','À retenir','L’essentiel à mémoriser','#eef5ff'],['remark','i','Remarque','Une information en plus','#f6f1ff'],
+      ['warning','!','Attention','Un point à ne pas oublier','#fff7e8'],['conclusion','✓','Conclusion','Finir et résumer','#f3f5f8']
+    ];
+    panel.innerHTML='<div class="v13-guide-head"><h3>Organiser mon cours</h3><button type="button">×</button></div><p class="v13-guide-sub">Choisis un bloc. NOVA applique automatiquement une mise en forme claire.</p>'+blocks.map(x=>`<button class="v13-block-btn" data-style="${x[0]}"><i style="background:${x[4]}">${x[1]}</i><span><b>${x[2]}</b><small>${x[3]}</small></span></button>`).join('');
+    document.body.appendChild(panel);
+    btn.onclick=()=>panel.classList.toggle('open');panel.querySelector('.v13-guide-head button').onclick=()=>panel.classList.remove('open');
+    panel.addEventListener('click',e=>{const b=e.target.closest('[data-style]');if(!b)return;const sel=$('blockStyle');if(sel){sel.value=b.dataset.style;sel.dispatchEvent(new Event('change',{bubbles:true}));sel.focus()}panel.classList.remove('open')});
+    document.addEventListener('pointerdown',e=>{if(panel.classList.contains('open')&&!panel.contains(e.target)&&e.target!==btn)panel.classList.remove('open')});
+  }
+
+  function setupFocusLabels(){
+    const a=$('editorFocusBtn');if(a){a.textContent='Focus';a.title='Écrire sans distraction'}
+    const b=$('focusModeBtn');if(b){b.textContent='Focus';b.title='Écrire sans distraction'}
+    const save=$('saveStatus'); if(save) save.textContent='Tout est sauvegardé';
+  }
+  function deselectOutside(){
+    const surf=$('pageSurface');if(!surf)return;
+    surf.addEventListener('pointerdown',e=>{
+      if(e.target.closest('.page-object,.page-table,.object-drag-handle,.resize-handle,.v12-rotate-handle'))return;
+      qa('.page-object.selected').forEach(x=>x.classList.remove('selected'));
+      const bar=$('objectContextBar');if(bar)bar.classList.remove('show','visible','active');
+    });
+  }
+  function addEncouragement(){
+    const bottom=q('.sidebar-bottom');if(!bottom||q('.v13-encouragement'))return;
+    const box=document.createElement('div');box.className='v13-encouragement';box.style.cssText='margin-top:8px;padding:10px;border-radius:13px;background:#f6f3ff;color:#5944b4;font-size:10px;line-height:1.4;text-align:center';box.innerHTML='<b>✦ Un pas à la fois</b><br><span style="color:#8b82aa">Tu n’as pas besoin de tout faire d’un coup.</span>';bottom.appendChild(box);
+  }
+  function simplifySidebar(){
+    // Les fonctions restent dans le DOM et donc dans le moteur, mais les écrans techniques quittent la navigation principale.
+    const capture=q('.nav-btn[data-view="capture"]');if(capture)capture.style.display='none';
+    const trash=q('.nav-btn[data-view="trash"]');if(trash)trash.style.display='none';
+  }
+  function watch(){
+    addRecentCard();renderRecent();setupMore();setupGuide();setupFocusLabels();deselectOutside();addEncouragement();simplifySidebar();
+    const obs=new MutationObserver(()=>{renderRecent()}); const root=$('homeworkPreview');if(root)obs.observe(root,{childList:true,subtree:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(watch,450));else setTimeout(watch,450);
+})();
+</script>
+
 </body>
 </html>
